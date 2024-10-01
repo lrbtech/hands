@@ -220,7 +220,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
         saveDataToPreference(context,
             userData: res.userData!,
             isSocialLogin: widget.isOTPLogin, onRedirectionClick: () {
-          DashboardScreen().launch(context, isNewTask: true);
+          Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (BuildContext context) {
+                return DashboardScreen();
+              },
+            ),
+            (_) => false,
+          );
+          // DashboardScreen().launch(context, isNewTask: true);
         });
       }).catchError((e) {
         toast(language.lblLoginAgain);

@@ -3,7 +3,7 @@ import 'package:hands_user_app/models/user_data.dart';
 
 class UserListResponse {
   Pagination? pagination;
-  List<UserData>? data;
+  List<UserDatas>? data;
 
   UserListResponse({this.pagination, this.data});
 
@@ -14,7 +14,7 @@ class UserListResponse {
     if (json['data'] != null) {
       data = [];
       json['data'].forEach((v) {
-        data!.add(new UserData.fromJson(v));
+        data!.add(new UserDatas.fromJson(v));
       });
     }
   }

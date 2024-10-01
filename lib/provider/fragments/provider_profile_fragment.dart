@@ -38,7 +38,7 @@ import 'package:nb_utils/nb_utils.dart';
 import '../services/addons/addon_service_list_screen.dart';
 
 class ProviderProfileFragment extends StatefulWidget {
-  final List<UserData>? list;
+  final List<UserDatas>? list;
 
   ProviderProfileFragment({this.list});
 

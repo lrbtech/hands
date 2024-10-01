@@ -16,7 +16,7 @@ import 'package:nb_utils/nb_utils.dart';
 
 class HandymanWidget extends StatefulWidget {
   final double width;
-  final UserData? data;
+  final UserDatas? data;
   final Function? onUpdate;
 
   HandymanWidget({required this.width, this.data, this.onUpdate});
@@ -120,7 +120,7 @@ class _HandymanWidgetState extends State<HandymanWidget> {
                         TextIcon(
                           onTap: () async {
                             toast(languages.pleaseWaitWhileWeLoadChatDetails);
-                            UserData? user = await providerService.getUserNull(
+                            UserDatas? user = await providerService.getUserNull(
                                 email: widget.data!.email.validate());
                             if (user != null) {
                               Fluttertoast.cancel();

@@ -391,7 +391,7 @@ class Handyman {
   String? createdAt;
   String? updatedAt;
   String? deletedAt;
-  UserData? handyman;
+  UserDatas? handyman;
 
   Handyman(
       {this.id,
@@ -410,7 +410,7 @@ class Handyman {
     updatedAt = json['updated_at'];
     deletedAt = json['deleted_at'];
     handyman = json['handyman'] != null
-        ? new UserData.fromJson(json['handyman'])
+        ? new UserDatas.fromJson(json['handyman'])
         : null;
   }
 

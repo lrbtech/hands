@@ -26,7 +26,7 @@ class MyProviderWidget extends StatelessWidget {
             future: getUserDetail(appStorePro.providerId.validate()),
             loadingWidget: LoaderWidget(),
             onSuccess: (snap) {
-              UserData data = snap.data!;
+              UserDatas data = snap.data!;
 
               return Container(
                 padding: EdgeInsets.all(16),

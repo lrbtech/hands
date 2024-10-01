@@ -12,11 +12,11 @@ import '../provider/jobRequest/models/post_job_data.dart';
 class BookingDetailResponses {
   BookingDatas? bookingDetail;
   ServiceData? service;
-  UserData? customer;
+  UserDatas? customer;
   List<BookingActivity>? bookingActivity;
   List<RatingDatas>? RatingData;
-  UserData? providerData;
-  List<UserData>? handymanData;
+  UserDatas? providerData;
+  List<UserDatas>? handymanData;
   CouponData? couponData;
   List<TaxData>? taxes;
   List<ServiceProof>? serviceProof;
@@ -24,7 +24,7 @@ class BookingDetailResponses {
 
   bool get isMe => handymanData.validate().isNotEmpty
       ? handymanData.validate().first.id.validate() ==
-          appStore.userId.validate()
+          appStorePro.userId.validate()
       : false;
 
   BookingDetailResponses({
@@ -49,7 +49,7 @@ class BookingDetailResponses {
         ? new ServiceData.fromJson(json['service'])
         : null;
     customer = json['customer'] != null
-        ? new UserData.fromJson(json['customer'])
+        ? new UserDatas.fromJson(json['customer'])
         : null;
     if (json['booking_activity'] != null) {
       bookingActivity = [];
@@ -58,7 +58,7 @@ class BookingDetailResponses {
       });
     }
     providerData = json['provider_data'] != null
-        ? new UserData.fromJson(json['provider_data'])
+        ? new UserDatas.fromJson(json['provider_data'])
         : null;
     if (json['rating_data'] != null) {
       RatingData = [];
@@ -73,7 +73,7 @@ class BookingDetailResponses {
     if (json['handyman_data'] != null) {
       handymanData = [];
       json['handyman_data'].forEach((v) {
-        handymanData!.add(new UserData.fromJson(v));
+        handymanData!.add(new UserDatas.fromJson(v));
       });
     }
     if (json['service_proof'] != null) {

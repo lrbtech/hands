@@ -1,13 +1,13 @@
 import 'package:hands_user_app/models/user_data.dart';
 
 class UserInfoResponse {
-  UserData? data;
+  UserDatas? data;
 
   UserInfoResponse({this.data});
 
   factory UserInfoResponse.fromJson(Map<String, dynamic> json) {
     return UserInfoResponse(
-      data: UserData.fromJson(json['data']),
+      data: UserDatas.fromJson(json['data']),
     );
   }
 

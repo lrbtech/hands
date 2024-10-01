@@ -39,7 +39,7 @@ class _PayToScreenState extends State<PayToScreen> {
   Future<UserBankDetails>? future;
   UserBankDetails? initialData;
 
-  Future<UserInfoResponse>? userDataFuture;
+  Future<UserInfoResponse>? UserDatasFuture;
   BoxDecoration headingDecoration = BoxDecoration();
 
   @override
@@ -49,7 +49,7 @@ class _PayToScreenState extends State<PayToScreen> {
   }
 
   void init() async {
-    userDataFuture = getUserDetail(appStorePro.providerId.validate());
+    UserDatasFuture = getUserDetail(appStorePro.providerId.validate());
   }
 
   void loadBankDetails() {
@@ -275,10 +275,10 @@ class _PayToScreenState extends State<PayToScreen> {
           ? languages.sendCashToAdmin
           : languages.sendCashToProvider,
       body: SnapHelperWidget<UserInfoResponse>(
-        future: userDataFuture,
+        future: UserDatasFuture,
         loadingWidget: LoaderWidget(),
         onSuccess: (snap) {
-          UserData data = snap.data!;
+          UserDatas data = snap.data!;
           return Stack(
             fit: StackFit.expand,
             children: [
@@ -360,7 +360,7 @@ class CashProviderWidget extends StatelessWidget {
 
   final BoxDecoration headingDecoration;
   final BuildContext context;
-  final UserData data;
+  final UserDatas data;
 
   @override
   Widget build(BuildContext context) {

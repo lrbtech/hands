@@ -17,7 +17,7 @@ class DashboardResponses {
   int? totalHandyman;
   List<ServiceData>? service;
   List<CategoryDatas>? category;
-  List<UserData>? handyman;
+  List<UserDatas>? handyman;
   num? totalRevenue;
   List<double>? chartArray;
   List<int>? monthData;
@@ -119,7 +119,7 @@ class DashboardResponses {
     if (json['handyman'] != null) {
       handyman = [];
       json['handyman'].forEach((v) {
-        handyman!.add(UserData.fromJson(v));
+        handyman!.add(UserDatas.fromJson(v));
       });
     }
 

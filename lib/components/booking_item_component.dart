@@ -7,7 +7,6 @@ import 'package:hands_user_app/provider/networks/rest_apis.dart';
 import 'package:hands_user_app/provider/components/assign_handyman_screen.dart';
 import 'package:hands_user_app/provider/jobRequest/job_post_detail_screen.dart';
 import 'package:hands_user_app/provider/screens/booking_detail_screen.dart';
-import 'package:hands_user_app/provider/screens/booking_detail_screen.dart';
 import 'package:hands_user_app/provider/utils/common.dart';
 import 'package:hands_user_app/provider/utils/configs.dart';
 import 'package:hands_user_app/provider/utils/constant.dart';
@@ -40,7 +39,7 @@ class BookingItemComponentState extends State<BookingItemComponent> {
   int page = 1;
   bool isLastPage = false;
 
-  List<UserData> handymanList = [];
+  List<UserDatas> handymanList = [];
 
   @override
   void initState() {
@@ -70,7 +69,7 @@ class BookingItemComponentState extends State<BookingItemComponent> {
 
   Future<void> updateBooking(
       BookingDatas booking, String updatedStatus, int index) async {
-    appStore.setLoading(true);
+    appStorePro.setLoading(true);
     Map request = {
       CommonKeys.id: booking.id,
       BookingUpdateKeys.status: updatedStatus,
@@ -80,9 +79,9 @@ class BookingItemComponentState extends State<BookingItemComponent> {
     };
     await bookingUpdate(request).then((res) async {
       setState(() {});
-      // appStore.setLoading(false);
+      // appStorePro.setLoading(false);
     }).catchError((e) {
-      // appStore.setLoading(false);
+      // appStorePro.setLoading(false);
     });
   }
 
@@ -188,7 +187,7 @@ class BookingItemComponentState extends State<BookingItemComponent> {
                                   horizontal: 8, vertical: 4),
                               margin: EdgeInsets.only(left: 4),
                               decoration: BoxDecoration(
-                                color: appStore.isDarkMode
+                                color: appStorePro.isDarkMode
                                     ? white.withOpacity(0.1)
                                     : context.primaryColor.withOpacity(0.1),
                                 borderRadius: radius(8),
@@ -196,7 +195,7 @@ class BookingItemComponentState extends State<BookingItemComponent> {
                               child: Text(
                                 languages.postJob,
                                 style: boldTextStyle(
-                                    color: appStore.isDarkMode
+                                    color: appStorePro.isDarkMode
                                         ? white
                                         : context.primaryColor,
                                     size: 12),
@@ -209,7 +208,7 @@ class BookingItemComponentState extends State<BookingItemComponent> {
                                   horizontal: 8, vertical: 4),
                               margin: EdgeInsets.only(left: 4),
                               decoration: BoxDecoration(
-                                color: appStore.isDarkMode
+                                color: appStorePro.isDarkMode
                                     ? white
                                     : context.primaryColor.withOpacity(0.1),
                                 borderRadius: radius(8),
@@ -217,7 +216,7 @@ class BookingItemComponentState extends State<BookingItemComponent> {
                               child: Text(
                                 languages.package,
                                 style: boldTextStyle(
-                                    color: appStore.isDarkMode
+                                    color: appStorePro.isDarkMode
                                         ? white
                                         : context.primaryColor,
                                     size: 12),
@@ -228,7 +227,7 @@ class BookingItemComponentState extends State<BookingItemComponent> {
                       Text(
                         '#${widget.bookingData.id.validate()}',
                         style: boldTextStyle(
-                            color: appStore.isDarkMode
+                            color: appStorePro.isDarkMode
                                 ? white
                                 : context.primaryColor),
                       ),
@@ -242,7 +241,7 @@ class BookingItemComponentState extends State<BookingItemComponent> {
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      color: appStore.isDarkMode ? white : lightGrey,
+                      color: appStorePro.isDarkMode ? white : lightGrey,
                     ),
                     child: Text(
                       // 'kareem',
@@ -262,7 +261,7 @@ class BookingItemComponentState extends State<BookingItemComponent> {
                   //             height: 20,
                   //           ),
                   //           Text(
-                  //             appStore.selectedLanguageCode == 'en' ? ' Urgent' : ' عاجل',
+                  //             appStorePro.selectedLanguageCode == 'en' ? ' Urgent' : ' عاجل',
                   //             style: boldTextStyle(
                   //               color: redColor,
                   //             ),
@@ -293,7 +292,7 @@ class BookingItemComponentState extends State<BookingItemComponent> {
                               height: 20,
                             ),
                             Text(
-                              appStore.selectedLanguageCode == 'en'
+                              appStorePro.selectedLanguageCode == 'en'
                                   ? ' Urgent'
                                   : ' عاجل',
                               style: boldTextStyle(
@@ -308,7 +307,7 @@ class BookingItemComponentState extends State<BookingItemComponent> {
                   if (widget.bookingData.bookingPackage != null)
                     PriceWidget(
                       price: widget.bookingData.totalAmount.validate(),
-                      color: appStore.isDarkMode ? white : primaryColor,
+                      color: appStorePro.isDarkMode ? white : primaryColor,
                     )
                   else
                     Row(
@@ -320,7 +319,7 @@ class BookingItemComponentState extends State<BookingItemComponent> {
                               widget.bookingData.type == SERVICE_TYPE_FREE,
                           price: widget.bookingData.amount.validate(),
                           normalColor:
-                              appStore.isDarkMode ? white : primaryColor,
+                              appStorePro.isDarkMode ? white : primaryColor,
                         ),
                         if (widget.bookingData.isHourlyService)
                           Row(
@@ -506,14 +505,14 @@ class BookingItemComponentState extends State<BookingItemComponent> {
                                         : widget.bookingData.paymentStatus
                                             .validate(),
                                   };
-                                  appStore.setLoading(true);
+                                  appStorePro.setLoading(true);
 
                                   bookingUpdate(request).then((res) async {
                                     /// If Auto Assign Provider it self when Handyman List is Empty
                                     if (otherSettingStorePro.enableAutoAssign ==
                                         1) {
                                       if (handymanList.isEmpty) {
-                                        if (appStore.isLoading) return;
+                                        if (appStorePro.isLoading) return;
 
                                         showConfirmDialogCustom(
                                           context,
@@ -528,15 +527,15 @@ class BookingItemComponentState extends State<BookingItemComponent> {
                                                   .bookingData.id
                                                   .validate(),
                                               CommonKeys.handymanId: [
-                                                appStore.userId.validate()
+                                                appStorePro.userId.validate()
                                               ],
                                             };
 
-                                            appStore.setLoading(true);
+                                            appStorePro.setLoading(true);
 
                                             await assignBooking(request)
                                                 .then((res) async {
-                                              appStore.setLoading(false);
+                                              appStorePro.setLoading(false);
 
                                               setState(() {});
                                               LiveStream().emit(
@@ -546,25 +545,25 @@ class BookingItemComponentState extends State<BookingItemComponent> {
 
                                               toast(res.message);
                                             }).catchError((e) {
-                                              appStore.setLoading(false);
+                                              appStorePro.setLoading(false);
 
                                               toast(e.toString());
                                             });
                                           },
                                         );
                                       } else {
-                                        appStore.setLoading(false);
+                                        appStorePro.setLoading(false);
                                         finish(context, true);
                                       }
                                     } else {
-                                      appStore.setLoading(false);
+                                      appStorePro.setLoading(false);
                                       finish(context, true);
                                     }
                                   }).catchError((e) {
                                     if (mounted) {
                                       finish(context);
                                     }
-                                    appStore.setLoading(false);
+                                    appStorePro.setLoading(false);
                                     toast(e.toString());
                                   });
                                 },
@@ -577,9 +576,7 @@ class BookingItemComponentState extends State<BookingItemComponent> {
                               Text(languages.decline, style: boldTextStyle()),
                           width: context.width(),
                           elevation: 0,
-                          color: appStore.isDarkMode
-                              ? context.scaffoldBackgroundColor
-                              : white,
+                          color: appStorePro.isDarkMode ? primaryColor : white,
                           onTap: () {
                             if (isUserTypeProvider) {
                               confirmationRequestDialog(context, widget.index!,

@@ -164,7 +164,16 @@ class _BookingConfirmationDialogState extends State<BookingConfirmationDialog> {
                       textStyle: boldTextStyle(size: 14, color: Colors.white),
                       color: context.primaryColor,
                       onTap: () {
-                        DashboardScreen().launch(context, isNewTask: true);
+                        Navigator.of(context, rootNavigator: true)
+                            .pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return DashboardScreen();
+                            },
+                          ),
+                          (_) => false,
+                        );
+                        // DashboardScreen().launch(context, isNewTask: true);
                       },
                     ).expand(),
                     16.width,

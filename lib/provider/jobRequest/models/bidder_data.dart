@@ -7,7 +7,7 @@ class BidderData {
   num? providerId;
   num? price;
   String? duration;
-  UserData? provider;
+  UserDatas? provider;
   PostJobData? postJobData;
 
   BidderData({
@@ -27,7 +27,7 @@ class BidderData {
     price = json['price'];
     duration = json['duration'];
     provider =
-        json['provider'] != null ? UserData.fromJson(json['provider']) : null;
+        json['provider'] != null ? UserDatas.fromJson(json['provider']) : null;
     postJobData = json['post_detail'] != null
         ? PostJobData.fromJson(json['post_detail'])
         : null;

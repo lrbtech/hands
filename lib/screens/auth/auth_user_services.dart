@@ -11,13 +11,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-Future<LoginResponse> loginCurrentUsers(BuildContext context, {required Map<String, dynamic> req, bool isSocialLogin = false, bool isOtpLogin = false}) async {
+Future<LoginResponse> loginCurrentUsers(BuildContext context,
+    {required Map<String, dynamic> req,
+    bool isSocialLogin = false,
+    bool isOtpLogin = false}) async {
   appStore.setLoading(true);
 
   String? uid = req['uid'];
 
   final userValue = await loginUser(req, isSocialLogin: isSocialLogin);
-  if (userValue.userData != null && userValue.userData!.status == 0) throw language.accessDeniedContactYourAdmin;
+  if (userValue.userData != null && userValue.userData!.status == 0)
+    throw language.accessDeniedContactYourAdmin;
   userValue.userData?.uid = uid;
 
   log("***************** Normal Login Succeeds *****************");
@@ -25,14 +29,19 @@ Future<LoginResponse> loginCurrentUsers(BuildContext context, {required Map<Stri
   return userValue;
 }
 
-void saveDataToPreference(BuildContext context, {required UserData userData, bool isSocialLogin = false, required Function onRedirectionClick}) async {
+void saveDataToPreference(BuildContext context,
+    {required UserData userData,
+    bool isSocialLogin = false,
+    required Function onRedirectionClick}) async {
   onRedirectionClick.call();
   saveUserData(userData);
   registerInFirebase(context, userData: userData, isSocialLogin: isSocialLogin);
 }
 
-void registerInFirebase(BuildContext context, {required UserData userData, bool isSocialLogin = false}) async {
-  await firebaseLogin(context, userData: userData, isSocialLogin: isSocialLogin).then((value) async {
+void registerInFirebase(BuildContext context,
+    {required UserData userData, bool isSocialLogin = false}) async {
+  await firebaseLogin(context, userData: userData, isSocialLogin: isSocialLogin)
+      .then((value) async {
     if (await userService.isUserExistWithUid(value.validate())) {
       appStore.setUId(value.validate());
     } else {}
@@ -42,11 +51,15 @@ void registerInFirebase(BuildContext context, {required UserData userData, bool 
   });
 }
 
-Future<String> firebaseLogin(BuildContext context, {required UserData userData, bool isSocialLogin = false}) async {
+Future<String> firebaseLogin(BuildContext context,
+    {required UserData userData, bool isSocialLogin = false}) async {
   try {
     final firebaseEmail = userData.email.validate();
 
-    final firebaseUid = await authService.signInWithEmailPassword(email: firebaseEmail, uid: userData.uid.validate(), isSocialLogin: isSocialLogin);
+    final firebaseUid = await authService.signInWithEmailPassword(
+        email: firebaseEmail,
+        uid: userData.uid.validate(),
+        isSocialLogin: isSocialLogin);
 
     userData.uid = firebaseUid;
 
@@ -71,7 +84,8 @@ Future<String> firebaseLogin(BuildContext context, {required UserData userData, 
   }
 }
 
-Future<String> registerUserInFirebase(BuildContext context, {required UserData user}) async {
+Future<String> registerUserInFirebase(BuildContext context,
+    {required UserData user}) async {
   try {
     log("*************************************************** Login user is registering again.  ***************************************************");
     return authService.signUpWithEmailPassword(context, userData: user);
@@ -85,9 +99,11 @@ Future<void> updateFirebaseToken({String? firebaseToken}) async {
   log('Api Call Token===== $firebaseToken');
   // if (firebaseToken.validate().isEmpty || !appStore.isLoggedIn) return;
 
-  MultipartRequest multiPartRequest = await getMultiPartRequest('update-profile');
+  MultipartRequest multiPartRequest =
+      await getMultiPartRequest('update-profile');
   Map<String, dynamic> req = {
-    UserKeys.firebaseToken: firebaseToken.validate().isNotEmpty ? firebaseToken : '',
+    UserKeys.firebaseToken:
+        firebaseToken.validate().isNotEmpty ? firebaseToken : '',
   };
 
   multiPartRequest.fields.addAll(await getMultipartFields(val: req));
@@ -110,9 +126,11 @@ Future<void> updateFirebaseToken({String? firebaseToken}) async {
 Future<void> updatePlayerId({required String playerId}) async {
   if (playerId.isEmpty || !appStore.isLoggedIn) return;
 
-  userService.updatePlayerIdInFirebase(email: appStore.userEmail.validate(), playerId: playerId);
+  userService.updatePlayerIdInFirebase(
+      email: appStore.userEmail.validate(), playerId: playerId);
 
-  MultipartRequest multiPartRequest = await getMultiPartRequest('update-profile');
+  MultipartRequest multiPartRequest =
+      await getMultiPartRequest('update-profile');
   Map<String, dynamic> req = {
     UserKeys.id: appStore.userId,
     UserKeys.playerId: playerId,

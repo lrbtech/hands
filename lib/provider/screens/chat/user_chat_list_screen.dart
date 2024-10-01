@@ -87,7 +87,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                     isLive: true,
                     shrinkWrap: true,
                     itemBuilder: (context, snap, index) {
-                      UserData contact = UserData.fromJson(
+                      UserDatas contact = UserDatas.fromJson(
                           snap.data() as Map<String, dynamic>);
                       return UserItemWidget(userUid: contact.uid.validate());
                     },

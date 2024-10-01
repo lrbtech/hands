@@ -8,35 +8,35 @@ import 'package:nb_utils/nb_utils.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
-class AuthService {
+class AuthServices {
   //region Email
 
   Future<String> signUpWithEmailPassword(BuildContext context,
-      {required UserData userData}) async {
+      {required UserDatas UserDatas}) async {
     return await _auth
         .createUserWithEmailAndPassword(
-            email: userData.email.validate(),
+            email: UserDatas.email.validate(),
             password: DEFAULT_PASSWORD_FOR_FIREBASE)
         .then((userCredential) async {
       User currentUser = userCredential.user!;
 
-      userData.uid = currentUser.uid.validate();
-      userData.createdAt = Timestamp.now().toDate().toString();
-      userData.updatedAt = Timestamp.now().toDate().toString();
-      userData.playerId = getStringAsync(PLAYERID);
+      UserDatas.uid = currentUser.uid.validate();
+      UserDatas.createdAt = Timestamp.now().toDate().toString();
+      UserDatas.updatedAt = Timestamp.now().toDate().toString();
+      UserDatas.playerId = getStringAsync(PLAYERID);
 
-      log("Step 1 ${userData.toFirebaseJson()}");
+      log("Step 1 ${UserDatas.toFirebaseJson()}");
 
-      return await setRegisterData(userData: userData);
+      return await setRegisterData(UserDatas: UserDatas);
     }).catchError((e) {
       throw "User is Not Registered in Firebase";
     });
   }
 
-  Future<String> setRegisterData({required UserData userData}) async {
+  Future<String> setRegisterData({required UserDatas UserDatas}) async {
     return await userService
         .addDocumentWithCustomId(
-            userData.uid.validate(), userData.toFirebaseJson())
+            UserDatas.uid.validate(), UserDatas.toFirebaseJson())
         .then((value) async {
       return value.id.validate();
     }).catchError((e) {

@@ -10,7 +10,7 @@ import 'package:nb_utils/nb_utils.dart';
 import '../../components/empty_error_state_widget.dart';
 
 class HandymanListComponent extends StatelessWidget {
-  final List<UserData> list;
+  final List<UserDatas> list;
 
   HandymanListComponent({required this.list});
 

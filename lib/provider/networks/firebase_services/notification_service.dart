@@ -13,10 +13,10 @@ import '../../../models/user_data.dart';
 class NotificationService {
   Future<void> sendPushNotifications(String title, String content,
       {String? image,
-      required UserData receiverUser,
-      required UserData senderUserData}) async {
+      required UserDatas receiverUser,
+      required UserDatas senderUserDatas}) async {
     log("PlayerID ${receiverUser.playerId.validate()}");
-    Map<String, dynamic> data = senderUserData.toJson();
+    Map<String, dynamic> data = senderUserDatas.toJson();
 
     /*if (email.validate().isNotEmpty) {
       */ /*data.putIfAbsent("email", () => email);

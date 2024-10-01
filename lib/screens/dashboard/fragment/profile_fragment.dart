@@ -381,8 +381,17 @@ class ProfileFragmentState extends State<ProfileFragment> {
                                   trailing: trailing,
                                   onTap: () async {
                                     doIfLoggedIn(context, () {
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pushAndRemoveUntil(
+                                        MaterialPageRoute(
+                                          builder: (BuildContext context) {
+                                            return BookingFragment();
+                                          },
+                                        ),
+                                        (_) => false,
+                                      );
                                       // MyPostRequestListScreen().launch(context);
-                                      BookingFragment().launch(context);
+                                      // BookingFragment().launch(context);
                                     });
                                   },
                                 ),

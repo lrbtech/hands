@@ -34,13 +34,13 @@ class AssignHandymanScreen extends StatefulWidget {
 class _AssignHandymanScreenState extends State<AssignHandymanScreen> {
   ScrollController scrollController = ScrollController();
 
-  Future<List<UserData>>? future;
-  List<UserData> handymanList = [];
+  Future<List<UserDatas>>? future;
+  List<UserDatas> handymanList = [];
 
   int page = 1;
   bool isLastPage = false;
 
-  UserData? userListData;
+  UserDatas? userListData;
 
   @override
   void initState() {
@@ -52,7 +52,7 @@ class _AssignHandymanScreenState extends State<AssignHandymanScreen> {
     future = getAllHandyman(
       page: page,
       serviceAddressId: widget.serviceAddressId,
-      userData: handymanList,
+      UserDatas: handymanList,
       lastPageCallback: (b) {
         isLastPage = b;
       },
@@ -128,8 +128,8 @@ class _AssignHandymanScreenState extends State<AssignHandymanScreen> {
     );
   }
 
-  Widget buildRadioListTile({required UserData userData}) {
-    return RadioListTile<UserData>(
+  Widget buildRadioListTile({required UserDatas userData}) {
+    return RadioListTile<UserDatas>(
       value: userData,
       contentPadding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
       controlAffinity: ListTileControlAffinity.trailing,
@@ -216,7 +216,7 @@ class _AssignHandymanScreenState extends State<AssignHandymanScreen> {
       appBarTitle: languages.lblAssignHandyman,
       body: Stack(
         children: [
-          SnapHelperWidget<List<UserData>>(
+          SnapHelperWidget<List<UserDatas>>(
             future: future,
             loadingWidget: LoaderWidget(),
             onSuccess: (snap) {

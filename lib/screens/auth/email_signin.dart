@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hands_user_app/component/base_scaffold_widget.dart';
 import 'package:hands_user_app/main.dart';
 import 'package:hands_user_app/network/rest_apis.dart';
+import 'package:hands_user_app/provider/auth.dart';
 import 'package:hands_user_app/screens/auth/auth_user_services.dart';
 import 'package:hands_user_app/screens/auth/forgot_password_screen.dart';
 import 'package:hands_user_app/screens/dashboard/dashboard_screen.dart';
@@ -109,7 +110,8 @@ class _EmailSinginScreenState extends State<EmailSinginScreen>
           .then((value) {
         print('User has been successfully signed in ${value.user?.email}');
       });
-
+      print("emailsign 1");
+      saveDataToPreferences(context, UserDatas: value.userDatas!);
       saveDataToPreference(context, userData: value.userData!,
           onRedirectionClick: () {
         onLoginSuccessRedirection();

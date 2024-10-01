@@ -19,9 +19,9 @@ class HandymanListScreen extends StatefulWidget {
 }
 
 class HandymanListScreenState extends State<HandymanListScreen> {
-  Future<List<UserData>>? future;
+  Future<List<UserDatas>>? future;
 
-  List<UserData> list = [];
+  List<UserDatas> list = [];
 
   int page = 1;
   bool isLastPage = false;
@@ -78,7 +78,7 @@ class HandymanListScreenState extends State<HandymanListScreen> {
       ),
       body: Stack(
         children: [
-          SnapHelperWidget<List<UserData>>(
+          SnapHelperWidget<List<UserDatas>>(
             future: future,
             loadingWidget: HandymanListShimmer(),
             onSuccess: (snap) {

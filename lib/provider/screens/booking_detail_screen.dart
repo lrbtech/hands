@@ -119,7 +119,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
               bookingId: res.bookingDetail!.id.validate(),
               bookingAmount: res.bookingDetail!.totalAmount.validate(),
               onAccept: (String remarks) {
-                appStore.setLoading(true);
+                appStorePro.setLoading(true);
                 updateBooking(res, '$remarks', BookingStatusKeys.complete);
               },
             ),
@@ -139,10 +139,10 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
       negativeText: languages.lblNo,
       onAccept: (context) async {
         if (status == BookingStatusKeys.pending) {
-          appStore.setLoading(true);
+          appStorePro.setLoading(true);
           updateBooking(res, '', BookingStatusKeys.accept);
         } else if (status == BookingStatusKeys.rejected) {
-          appStore.setLoading(true);
+          appStorePro.setLoading(true);
           updateBooking(res, '', BookingStatusKeys.rejected);
         } else if (status == BookingStatusKeys.complete) {
           if (res.bookingDetail!.paymentMethod == PAYMENT_METHOD_COD) {
@@ -159,10 +159,10 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
       bookingId: bookingId,
       serviceAddressId: addressId,
       onUpdate: () {
-        appStore.setLoading(true);
+        appStorePro.setLoading(true);
         init(flag: true);
 
-        if (appStore.isLoading) appStore.setLoading(false);
+        if (appStorePro.isLoading) appStorePro.setLoading(false);
       },
     ).launch(context);
   }
@@ -272,7 +272,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
       }
       init(flag: true);
     }).catchError((e) {
-      appStore.setLoading(false);
+      appStorePro.setLoading(false);
       toast(e.toString(), print: true);
     });
   }
@@ -282,7 +282,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
     bool isAddExtraCharges = false,
     bool isEditExtraCharges = false,
   }) async {
-    appStore.setLoading(true);
+    appStorePro.setLoading(true);
 
     Map req = isEditExtraCharges
         ? {
@@ -340,7 +340,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
       toast(e.toString(), print: true);
     });
 
-    appStore.setLoading(false);
+    appStorePro.setLoading(false);
   }
 
   //endregion
@@ -414,7 +414,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
           //           height: 20,
           //         ),
           //         Text(
-          //           appStore.selectedLanguageCode == 'en' ? '( Urgent )' : '( عاجل )',
+          //           appStorePro.selectedLanguageCode == 'en' ? '( Urgent )' : '( عاجل )',
           //           style: boldTextStyle(
           //             color: redColor,
           //           ),
@@ -545,7 +545,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
           children: [
             8.height,
             Text(
-                appStore.selectedLanguageCode == 'en'
+                appStorePro.selectedLanguageCode == 'en'
                     ? "${languages.lblBooking.split('s').join(' ')} ${languages.hintDescription}"
                     : "${languages.hintDescription}",
                 style: boldTextStyle(size: LABEL_TEXT_SIZE)),
@@ -736,7 +736,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
               decoration: boxDecorationWithRoundedCorners(
                 borderRadius: radius(),
                 backgroundColor: context.cardColor,
-                border: appStore.isDarkMode
+                border: appStorePro.isDarkMode
                     ? Border.all(color: context.dividerColor)
                     : null,
               ),
@@ -798,7 +798,9 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
   }
 
   Widget _action({required BookingDetailResponses res}) {
-    showBottomActionBar = false;
+    print("res ${isUserTypeProvider}");
+    print("res isMe ${res.isMe}");
+    showBottomActionBar = true;
     if (isUserTypeProvider) {
       if (res.isMe.validate()) {
         return handleHandyman(res: res);
@@ -836,12 +838,12 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
                             ? SERVICE_PAYMENT_STATUS_ADVANCE_PAID
                             : res.bookingDetail!.paymentStatus.validate(),
                   };
-                  appStore.setLoading(true);
+                  appStorePro.setLoading(true);
 
                   bookingUpdate(request).then((res) async {
-                    appStore.setLoading(false);
+                    appStorePro.setLoading(false);
                   }).catchError((e) {
-                    appStore.setLoading(false);
+                    appStorePro.setLoading(false);
                     toast(e.toString());
                   });
                 },
@@ -937,7 +939,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
                   positiveText: languages.lblOk,
                   negativeText: languages.lblCancel,
                   onAccept: (c) async {
-                    appStore.setLoading(true);
+                    appStorePro.setLoading(true);
                     try {
                       LocationPermission locationPermission =
                           await Geolocator.checkPermission();
@@ -977,9 +979,9 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
                                 bookingId:
                                     res.bookingDetail!.id!.toInt().toString());
                           } else {
-                            appStore.setLoading(false);
+                            appStorePro.setLoading(false);
                             finish(context);
-                            toast(appStore.selectedLanguageCode == 'ar'
+                            toast(appStorePro.selectedLanguageCode == 'ar'
                                 ? 'يجب السماح بالحصول على إذن الموقع'
                                 : 'You have to allow location permission');
                           }
@@ -1000,7 +1002,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
       } else {
         return Center(
           child: Text(
-            appStore.selectedLanguageCode == 'ar'
+            appStorePro.selectedLanguageCode == 'ar'
                 ? 'في انتظار قيام المستخدم بالدفع ، بعدها يمكنك البدء في القيادة إلى العميل.'
                 : 'Waiting for the user to pay then you could start driving to client.',
             style: boldTextStyle(size: LABEL_TEXT_SIZE),
@@ -1213,7 +1215,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
         imageWidget: ErrorStateWidget(),
         retryText: languages.reload,
         onRetry: () {
-          appStore.setLoading(true);
+          appStorePro.setLoading(true);
 
           init();
           setState(() {});
@@ -1245,19 +1247,19 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            appStore.selectedLanguageCode == 'en'
+                            appStorePro.selectedLanguageCode == 'en'
                                 ? 'Category'
                                 : 'فئة',
                             style: boldTextStyle(
                                 size: LABEL_TEXT_SIZE,
-                                color: appStore.isDarkMode
+                                color: appStorePro.isDarkMode
                                     ? white
                                     : gray.withOpacity(0.8)),
                           ),
                           Text(
                               '${getCategoryName(res.data!.postRequestDetail!.category)}',
                               style: boldTextStyle(
-                                  color: appStore.isDarkMode
+                                  color: appStorePro.isDarkMode
                                       ? white
                                       : primaryColor,
                                   size: 16)),
@@ -1271,7 +1273,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
                             languages.lblBookingID,
                             style: boldTextStyle(
                                 size: LABEL_TEXT_SIZE,
-                                color: appStore.isDarkMode
+                                color: appStorePro.isDarkMode
                                     ? white
                                     : gray.withOpacity(0.8)),
                           ),
@@ -1280,11 +1282,12 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
                                   res.data!.bookingDetail!.id
                                       .toString()
                                       .validate(),
-                              style: boldTextStyle(
-                                  color: appStore.isDarkMode
-                                      ? white
-                                      : primaryColor,
-                                  size: 16)),
+                              style:
+                                  boldTextStyle(
+                                      color: appStorePro.isDarkMode
+                                          ? white
+                                          : primaryColor,
+                                      size: 16)),
                         ],
                       ),
                       8.height,
@@ -1297,7 +1300,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
                               height: 20,
                             ),
                             Text(
-                              appStore.selectedLanguageCode == 'en'
+                              appStorePro.selectedLanguageCode == 'en'
                                   ? ' Urgent'
                                   : ' عاجل',
                               style: boldTextStyle(
@@ -1342,7 +1345,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
                   //     serviceProofList: res.data!.serviceProof!),
 
                   /// About Handyman Card
-                  // if (res.data!.handymanData!.isNotEmpty && appStore.userType != USER_TYPE_HANDYMAN)
+                  // if (res.data!.handymanData!.isNotEmpty && appStorePro.userType != USER_TYPE_HANDYMAN)
                   //   Column(
                   //     crossAxisAlignment: CrossAxisAlignment.start,
                   //     children: [
@@ -1575,7 +1578,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
                 bottom: 0,
                 child: Container(
                   width: context.width(),
-                  decoration: BoxDecoration(color: context.cardColor),
+                  decoration: BoxDecoration(color: primaryColor),
                   child: _action(res: res.data!),
                   padding: showBottomActionBar
                       ? EdgeInsets.all(16)
@@ -1585,7 +1588,8 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
             ],
           ),
           Observer(
-              builder: (context) => LoaderWidget().visible(appStore.isLoading))
+              builder: (context) =>
+                  LoaderWidget().visible(appStorePro.isLoading))
         ],
       );
     }
@@ -1610,8 +1614,8 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
       future: future,
       initialData: initialData(),
       builder: (context, snap) {
-        // if (appStore.trackingJobId != null) {
-        //   if (snap.data?.bookingDetail?.id == appStore.trackingJobId && snap.data?.bookingDetail?.status != BookingStatusKeys.onGoing) {
+        // if (appStorePro.trackingJobId != null) {
+        //   if (snap.data?.bookingDetail?.id == appStorePro.trackingJobId && snap.data?.bookingDetail?.status != BookingStatusKeys.onGoing) {
         //     FirebaseDatabaseService.getInstance().stopTracking(bookingId: snap.data!.bookingDetail!.id!.toString());
         //   }
         // }
@@ -1749,7 +1753,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
           request.addAll(bookingAmountModel.toBookingUpdateJson());
         }
 
-        appStore.setLoading(true);
+        appStorePro.setLoading(true);
 
         log('RES: ${jsonEncode(request)}');
         await updateBooking2(request).then((res) async {
@@ -1759,11 +1763,11 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
           //     status: BookingStatusKeys.complete,
           //     timeInSec: status.bookingDetail!.durationDiff.validate().toInt());
 
-          appStore.setLoading(false);
+          appStorePro.setLoading(false);
           init();
           setState(() {});
         }).catchError((e) {
-          appStore.setLoading(false);
+          appStorePro.setLoading(false);
           toast(e.toString(), print: true);
         });
       },
@@ -1771,7 +1775,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
   }
 
   completeWorkAfterRejection() async {
-    appStore.setLoading(true);
+    appStorePro.setLoading(true);
 
     Map request = {
       'id': widget.bookingId,
@@ -1784,11 +1788,11 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
       //     status: BookingStatusKeys.complete,
       //     timeInSec: status.bookingDetail!.durationDiff.validate().toInt());
 
-      appStore.setLoading(false);
+      appStorePro.setLoading(false);
       init();
       setState(() {});
     }).catchError((e) {
-      appStore.setLoading(false);
+      appStorePro.setLoading(false);
       toast(e.toString(), print: true);
     });
   }
@@ -1814,7 +1818,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
           //   children: [
           //     if (data.bookingDetail!.description.validate().isNotEmpty)
           //       titleWidget(
-          //         title: appStore.selectedLanguageCode == 'en' ? 'Address Title' : 'اسم العنوان',
+          //         title: appStorePro.selectedLanguageCode == 'en' ? 'Address Title' : 'اسم العنوان',
           //         detail: data.bookingDetail!.addressDetails!.name.validate().capitalizeFirstLetter(),
           //         detailTextStyle: primaryTextStyle(),
           //         isReadMore: false,
@@ -1827,7 +1831,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
           //       ).paddingSymmetric(horizontal: 10),
           //     if (data.bookingDetail!.addressDetails!.villaNumber.validate().isNotEmpty)
           //       titleWidget(
-          //         title: appStore.selectedLanguageCode == 'en' ? 'Building name / Villa number' : 'اسم المبنى / رقم الفيلا',
+          //         title: appStorePro.selectedLanguageCode == 'en' ? 'Building name / Villa number' : 'اسم المبنى / رقم الفيلا',
           //         detail: data.bookingDetail!.addressDetails!.villaNumber.validate(),
           //         detailTextStyle: primaryTextStyle(),
           //         isReadMore: false,
@@ -1849,7 +1853,7 @@ class BookingDetailScreenState extends State<BookingDetailScreen> {
                   ),
                   10.width,
                   Text(
-                    appStore.selectedLanguageCode == 'en'
+                    appStorePro.selectedLanguageCode == 'en'
                         ? 'Show location on map'
                         : 'عرض الموقع على الخريطة',
                     style: boldTextStyle(color: white),
@@ -1903,7 +1907,9 @@ Widget titleWidget(
                   ),
                   6.width,
                   Text(
-                    appStore.selectedLanguageCode != 'en' ? 'عاجل' : 'Urgent',
+                    appStorePro.selectedLanguageCode != 'en'
+                        ? 'عاجل'
+                        : 'Urgent',
                     style: boldTextStyle(color: redColor),
                   )
                 ],

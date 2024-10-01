@@ -19,11 +19,11 @@ class UserItemWidget extends StatefulWidget {
 class _UserItemWidgetState extends State<UserItemWidget> {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<UserData>(
+    return StreamBuilder<UserDatas>(
       stream: providerService.singleUser(widget.userUid),
       builder: (context, snap) {
         if (snap.hasData) {
-          UserData data = snap.data!;
+          UserDatas data = snap.data!;
 
           return InkWell(
             onTap: () {

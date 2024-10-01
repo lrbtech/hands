@@ -18,9 +18,9 @@ import 'package:url_launcher/url_launcher.dart';
 import '../models/booking_detail_response.dart';
 
 class BasicInfoComponent extends StatefulWidget {
-  final UserData? handymanData;
-  final UserData? customerData;
-  final UserData? providerData;
+  final UserDatas? handymanData;
+  final UserDatas? customerData;
+  final UserDatas? providerData;
   final ServiceData? service;
   final BookingDetailResponses? bookingInfo;
 
@@ -43,9 +43,9 @@ class BasicInfoComponent extends StatefulWidget {
 }
 
 class BasicInfoComponentState extends State<BasicInfoComponent> {
-  UserData customer = UserData();
-  UserData provider = UserData();
-  UserData userData = UserData();
+  UserDatas customer = UserDatas();
+  UserDatas provider = UserDatas();
+  UserDatas userDatas = UserDatas();
   ServiceData service = ServiceData();
 
   String? googleUrl;
@@ -72,7 +72,7 @@ class BasicInfoComponentState extends State<BasicInfoComponent> {
       contactNumber = widget.customerData!.contactNumber.validate();
       address = widget.customerData!.address.validate();
 
-      userData = widget.customerData!;
+      userDatas = widget.customerData!;
       await userService
           .getUser(email: widget.customerData!.email.validate())
           .then((value) {
@@ -87,7 +87,7 @@ class BasicInfoComponentState extends State<BasicInfoComponent> {
       contactNumber = widget.handymanData!.contactNumber.validate();
       address = widget.handymanData!.address.validate();
 
-      userData = widget.handymanData!;
+      userDatas = widget.handymanData!;
       await userService
           .getUser(email: widget.handymanData!.email.validate())
           .then((value) {
@@ -142,7 +142,7 @@ class BasicInfoComponentState extends State<BasicInfoComponent> {
                         ],
                       ),
                       10.height,
-                      if (userData.email.validate().isNotEmpty &&
+                      if (userDatas.email.validate().isNotEmpty &&
                           widget.flag == 0 &&
                           widget.bookingDetail!.canCustomerContact)
                         Row(
@@ -150,12 +150,12 @@ class BasicInfoComponentState extends State<BasicInfoComponent> {
                             ic_message.iconImage(
                                 size: 16, color: textSecondaryColorGlobal),
                             6.width,
-                            Text(userData.email.validate(),
+                            Text(userDatas.email.validate(),
                                     style: secondaryTextStyle())
                                 .flexible(),
                           ],
                         ).onTap(() {
-                          launchMail(userData.email.validate());
+                          launchMail(userDatas.email.validate());
                         }),
                       if (widget.bookingDetail != null &&
                           widget.flag == 0 &&
@@ -187,13 +187,13 @@ class BasicInfoComponentState extends State<BasicInfoComponent> {
                       if (widget.flag == 1)
                         DisabledRatingBarWidget(
                             rating:
-                                userData.handymanRating.validate().toDouble(),
+                                userDatas.handymanRating.validate().toDouble(),
                             size: 14),
                     ],
                   ).expand()
                 ],
               ),
-              if (userData.userType.validate() == IS_USER ||
+              if (userDatas.userType.validate() == IS_USER ||
                   widget.bookingInfo != null &&
                       (widget.bookingInfo!.providerData!.id.validate() !=
                           widget.handymanData!.id.validate()))

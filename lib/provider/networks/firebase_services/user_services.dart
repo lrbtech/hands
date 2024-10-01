@@ -39,10 +39,10 @@ class ProviderService extends BaseService {
     return ref!.doc(id).update(data as Map<String, Object?>);
   }
 
-  Future<UserData> getUser({String? email}) {
+  Future<UserDatas> getUser({String? email}) {
     return ref!.where("email", isEqualTo: email).limit(1).get().then((value) {
       if (value.docs.length == 1) {
-        return UserData.fromJson(
+        return UserDatas.fromJson(
             value.docs.first.data() as Map<String, dynamic>);
       } else {
         throw '${languages.lblNoUserFound}';
@@ -50,10 +50,10 @@ class ProviderService extends BaseService {
     });
   }
 
-  Future<UserData?> getUserNull({String? email}) {
+  Future<UserDatas?> getUserNull({String? email}) {
     return ref!.where("email", isEqualTo: email).limit(1).get().then((value) {
       if (value.docs.length == 1) {
-        return UserData.fromJson(
+        return UserDatas.fromJson(
             value.docs.first.data() as Map<String, dynamic>);
       } else {
         return null;
@@ -61,7 +61,7 @@ class ProviderService extends BaseService {
     });
   }
 
-  Stream<List<UserData>> users({String? searchText}) {
+  Stream<List<UserDatas>> users({String? searchText}) {
     return ref!
         .where('caseSearch',
             arrayContains: searchText.validate().isEmpty
@@ -70,19 +70,19 @@ class ProviderService extends BaseService {
         .snapshots()
         .map((x) {
       return x.docs.map((y) {
-        return UserData.fromJson(y.data() as Map<String, dynamic>);
+        return UserDatas.fromJson(y.data() as Map<String, dynamic>);
       }).toList();
     });
   }
 
-  Future<UserData> userByEmail(String? email) async {
+  Future<UserDatas> userByEmail(String? email) async {
     return await ref!
         .where('email', isEqualTo: email)
         .limit(1)
         .get()
         .then((value) {
       if (value.docs.isNotEmpty) {
-        return UserData.fromJson(
+        return UserDatas.fromJson(
             value.docs.first.data() as Map<String, dynamic>);
       } else {
         throw '${languages.lblNoUserFound}';
@@ -90,20 +90,21 @@ class ProviderService extends BaseService {
     });
   }
 
-  Stream<UserData> singleUser(String? id, {String? searchText}) {
+  Stream<UserDatas> singleUser(String? id, {String? searchText}) {
     return ref!.where('uid', isEqualTo: id).limit(1).snapshots().map((event) {
-      return UserData.fromJson(event.docs.first.data() as Map<String, dynamic>);
+      return UserDatas.fromJson(
+          event.docs.first.data() as Map<String, dynamic>);
     });
   }
 
-  Future<UserData> userByMobileNumber(String? phone) async {
+  Future<UserDatas> userByMobileNumber(String? phone) async {
     return await ref!
         .where('phoneNumber', isEqualTo: phone)
         .limit(1)
         .get()
         .then((value) {
       if (value.docs.isNotEmpty) {
-        return UserData.fromJson(
+        return UserDatas.fromJson(
             value.docs.first.data() as Map<String, dynamic>);
       } else {
         throw "${languages.lblNoUserFound}";

@@ -227,7 +227,7 @@ class _JobPostDetailScreenState extends State<JobPostDetailScreen> {
           .any((element) => element.providerId == appStorePro.userId)) {
         BidderData? bidderData = bidderList
             .firstWhere((element) => element.providerId == appStorePro.userId);
-        UserData? user = bidderData.provider;
+        UserDatas? user = bidderData.provider;
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,

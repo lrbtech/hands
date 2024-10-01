@@ -18,7 +18,7 @@ import 'package:hands_user_app/provider/utils/constant.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class UserChatScreen extends StatefulWidget {
-  final UserData receiverUser;
+  final UserDatas receiverUser;
 
   UserChatScreen({required this.receiverUser});
 
@@ -32,7 +32,7 @@ class _UserChatScreenState extends State<UserChatScreen>
 
   FocusNode messageFocus = FocusNode();
 
-  UserData senderUser = UserData();
+  UserDatas senderUser = UserDatas();
 
   StreamSubscription? _streamSubscription;
 
@@ -186,7 +186,7 @@ class _UserChatScreenState extends State<UserChatScreen>
           // receiverPlayerId: widget.receiverUser.playerId.validate(),
           // receiverUserId: widget.receiverUser.id.validate().toString(),
           receiverUser: widget.receiverUser,
-          senderUserData: senderUser,
+          senderUserDatas: senderUser,
         )
             .catchError((e) {
           log("Notification Error ${e.toString()}");

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:hands_user_app/models/provider_subscription_model.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-class UserData {
+class UserDatas {
   int? id;
   List<String>? categoriesIds;
   String? uid;
@@ -102,7 +102,7 @@ class UserData {
     return obj;
   }
 
-  UserData({
+  UserDatas({
     this.id,
     this.username,
     this.firstName,
@@ -152,7 +152,7 @@ class UserData {
     this.isEmailVerified,
   });
 
-  UserData.fromJson(Map<String, dynamic> json) {
+  UserDatas.fromJson(Map<String, dynamic> json) {
     id = json['id'].toString().toInt();
     categoriesIds = [];
     if (json['category_ids'] != null) {

@@ -1,13 +1,13 @@
 import 'package:hands_user_app/models/user_data.dart';
 
 class CommonResponseModel {
-  UserData? data;
+  UserDatas? data;
   String? message;
 
   CommonResponseModel({this.data, this.message});
 
   CommonResponseModel.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new UserData.fromJson(json['data']) : null;
+    data = json['data'] != null ? new UserDatas.fromJson(json['data']) : null;
     message = json['message'];
   }
 

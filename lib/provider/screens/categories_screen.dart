@@ -14,6 +14,7 @@ import 'package:hands_user_app/provider/networks/rest_apis.dart';
 import 'package:hands_user_app/provider/components/info_widget.dart';
 import 'package:hands_user_app/provider/jobRequest/models/post_job_data.dart';
 import 'package:hands_user_app/provider/utils/common.dart';
+import 'package:hands_user_app/provider/utils/configs.dart';
 import 'package:hands_user_app/provider/utils/constant.dart';
 import 'package:hands_user_app/provider/utils/firebase_messaging_utils.dart';
 import 'package:hands_user_app/provider/utils/images.dart';
@@ -199,7 +200,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     var request = Request(
       'POST',
       Uri.parse(
-        'https://handsappuae.com/secure-admin-panel/api/subscribed-category-delete/$id',
+        '${BASE_URL}subscribed-category-delete/$id',
       ),
     );
 

@@ -17,7 +17,7 @@ import 'package:nb_utils/nb_utils.dart';
 
 class HandymanAddUpdateScreen extends StatefulWidget {
   final String? userType;
-  final UserData? data;
+  final UserDatas? data;
   final Function? onUpdate;
 
   HandymanAddUpdateScreen({this.userType, this.data, this.onUpdate});

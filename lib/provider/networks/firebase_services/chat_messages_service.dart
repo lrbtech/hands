@@ -211,14 +211,14 @@ class ProviderChatServices extends BaseService {
         .update({"isOnline": status});
   }
 
-  Stream<UserData> isReceiverOnline(
+  Stream<UserDatas> isReceiverOnline(
       {required String receiverUserId, required String senderId}) {
     return userRef!
         .doc(senderId)
         .collection(CONTACT_COLLECTION)
         .doc(receiverUserId)
         .snapshots()
-        .map(
-            (event) => UserData.fromJson(event.data() as Map<String, dynamic>));
+        .map((event) =>
+            UserDatas.fromJson(event.data() as Map<String, dynamic>));
   }
 }

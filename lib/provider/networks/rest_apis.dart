@@ -210,7 +210,7 @@ Future<LoginResponse> loginUser(Map request) async {
   return res;
 }
 
-Future<void> saveUserData(UserData data) async {
+Future<void> saveUserDatass(UserDatas data) async {
   if (data.status == 1) {
     // if (data.apiToken != null) await appStorePro.setToken(data.apiToken.validate());
 
@@ -665,11 +665,11 @@ Future<BaseResponseModel> updateHandymanStatus(Map request) async {
           request: request, method: HttpMethodType.POST)));
 }
 
-Future<List<UserData>> getHandyman(
+Future<List<UserDatas>> getHandyman(
     {int? page,
     int? providerId,
     String? userTypeHandyman = "handyman",
-    required List<UserData> list,
+    required List<UserDatas> list,
     Function(bool)? lastPageCallback}) async {
   try {
     var res = UserListResponse.fromJson(
@@ -696,10 +696,10 @@ Future<List<UserData>> getHandyman(
   return list;
 }
 
-Future<List<UserData>> getAllHandyman(
+Future<List<UserDatas>> getAllHandyman(
     {int? page,
     int? serviceAddressId,
-    required List<UserData> userData,
+    required List<UserDatas> UserDatas,
     Function(bool)? lastPageCallback}) async {
   try {
     UserListResponse res = UserListResponse.fromJson(
@@ -708,9 +708,9 @@ Future<List<UserData>> getAllHandyman(
           method: HttpMethodType.GET)),
     );
 
-    if (page == 1) userData.clear();
+    if (page == 1) UserDatas.clear();
 
-    userData.addAll(res.data.validate());
+    UserDatas.addAll(res.data.validate());
 
     lastPageCallback?.call(res.data.validate().length != PER_PAGE_ITEM);
     appStorePro.setLoading(false);
@@ -721,11 +721,11 @@ Future<List<UserData>> getAllHandyman(
     throw errorSomethingWentWrong;
   }
 
-  return userData;
+  return UserDatas;
 }
 
-Future<UserData> deleteHandyman(int id) async {
-  return UserData.fromJson(await handleResponse(await buildHttpResponse(
+Future<UserDatas> deleteHandyman(int id) async {
+  return UserDatas.fromJson(await handleResponse(await buildHttpResponse(
       'handyman-delete/$id',
       method: HttpMethodType.POST)));
 }

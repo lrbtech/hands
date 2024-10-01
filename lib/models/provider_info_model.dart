@@ -4,7 +4,7 @@ import 'package:hands_user_app/models/user_data.dart';
 import 'service_model.dart';
 
 class HandymanInfoResponse {
-  UserData? handymanData;
+  UserDatas? handymanData;
   List<ServiceData>? service;
   List<RatingDatas>? handymanRatingReview;
 
@@ -13,7 +13,7 @@ class HandymanInfoResponse {
 
   HandymanInfoResponse.fromJson(Map<String, dynamic> json) {
     handymanData =
-        json['data'] != null ? new UserData.fromJson(json['data']) : null;
+        json['data'] != null ? new UserDatas.fromJson(json['data']) : null;
     if (json['service'] != null) {
       service = [];
       json['service'].forEach((v) {

@@ -53,7 +53,7 @@ class LoaderWidget extends StatelessWidget {
                 child: Stack(
                   children: [
                     Image.asset(
-                      'assets/ic_launcher-playstore.png',
+                      'assets/ic_app_logo.png',
                       width: 80,
                     ).center(),
                     LoadingAnimationWidget.threeArchedCircle(
@@ -79,7 +79,7 @@ class LoaderWidget extends StatelessWidget {
                 height: 100,
                 color: Colors.transparent,
                 child: Image.asset(
-                  'assets/images/app_logo.png',
+                  'assets/ic_app_logo.png',
                   width: 100,
                   height: 100,
                   fit: BoxFit.cover,

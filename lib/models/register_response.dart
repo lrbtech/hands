@@ -1,14 +1,14 @@
 import 'package:hands_user_app/models/user_data.dart';
 
 class RegisterResponse {
-  UserData? data;
+  UserDatas? data;
   String? message;
 
   RegisterResponse({this.data, this.message});
 
   factory RegisterResponse.fromJson(Map<String, dynamic> json) {
     return RegisterResponse(
-      data: json['data'] != null ? UserData.fromJson(json['data']) : null,
+      data: json['data'] != null ? UserDatas.fromJson(json['data']) : null,
       message: json['message'],
     );
   }

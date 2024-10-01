@@ -1,12 +1,12 @@
 import 'package:hands_user_app/models/user_data.dart';
 
 class LoginResponse {
-  UserData? data;
+  UserDatas? data;
 
   LoginResponse({this.data});
 
   LoginResponse.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new UserData.fromJson(json['data']) : null;
+    data = json['data'] != null ? new UserDatas.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
