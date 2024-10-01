@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>610524636818-hn6fvl9s7ohp8fbvbhcrp0mus97o02s0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.610524636818-hn6fvl9s7ohp8fbvbhcrp0mus97o02s0</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>610524636818-171k7n0kd3bhh9q5cqrgssqh9rujlu73.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB16IRzp2yt2LsQxzdK68-5L_Z3IBWLBgs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>610524636818</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.handsappuae.user</string>
+	<key>PROJECT_ID</key>
+	<string>hands-app-72fd2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hands-app-72fd2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:610524636818:ios:7a24adc64cefa4a294284b</string>
+	<key>DATABASE_URL</key>
+	<string>https://hands-app-72fd2-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

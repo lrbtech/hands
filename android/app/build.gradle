@@ -1,0 +1,75 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'com.google.gms.google-services'
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    compileSdkVersion 34
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        applicationId 'com.handsappuae.user'
+        minSdkVersion 25
+        targetSdkVersion 34
+        versionCode 2
+        versionName '1.0.0'
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            shrinkResources false
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.30"
+    implementation "androidx.appcompat:appcompat:1.3.0"
+    implementation platform('com.google.firebase:firebase-bom:30.3.1')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'phonepe.intentsdk.android.release:IntentSDK:2.3.0'
+    implementation 'com.android.support:multidex:2.0.1'
+}
+
+configurations.all {
+    resolutionStrategy { force 'androidx.browser:browser:1.4.0' }
+}

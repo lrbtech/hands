@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Hands UAE</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Hands UAE</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.610524636818-hn6fvl9s7ohp8fbvbhcrp0mus97o02s0</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.PhonePe-iOS-Intent-SDK-Integration</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>iOSIntentIntegration</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.610524636818-ss725519g7l9edhj1dfgkpl39hb33sbm.apps.googleusercontent.com</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.610524636818-ss725519g7l9edhj1dfgkpl39hb33sbm</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<key>GIDClientID</key>
+	<string>610524636818-hn6fvl9s7ohp8fbvbhcrp0mus97o02s0.apps.googleusercontent.com</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>whatsapp</string>
+		<string>ppemerchantsdkv1</string>
+		<string>ppemerchantsdkv2</string>
+		<string>ppemerchantsdkv3</string>
+		<string>paytmmp</string>
+		<string>gpay</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Hands UAE app requires access to the Camera to upload your profile photo.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Hands UAE app requires access to the Camera to upload your profile photo.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Hands UAE app requires address permission access to get the current location of the user instead of typing address manually. </string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Hands UAE app requires address permission access to get the current location of the user instead of typing address manually. </string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Hands UAE app requires address permission access to get the current location of the user instead of typing address manually. </string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Hands UAE app requires access to microphone when you will be used to record your speech at time of  press the "Mic" button.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Hands UAE app requires access to the photo library to upload your profile photo.</string>
+	<key>Privacy-Location Usage Description</key>
+	<string>Hands UAE app requires address permission access to get the current location of the user instead of typing address manually. </string>
+	<key>SKAdNetworkItems</key>
+	<array>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>cstr6suwn9.skadnetwork</string>
+		</dict>
+	</array>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+</dict>
+</plist>

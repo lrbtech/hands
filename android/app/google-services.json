@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "610524636818",
+    "firebase_url": "https://hands-app-72fd2-default-rtdb.firebaseio.com",
+    "project_id": "hands-app-72fd2",
+    "storage_bucket": "hands-app-72fd2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610524636818:android:5c50ad200fba330394284b",
+        "android_client_info": {
+          "package_name": "com.handsappuae.provider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610524636818-n5n9m9i8hs58eh1vhllnsv9bpl7h5iq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuVi8O9a7QDpjBpZFhz7aPl2uanqeVLu0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610524636818-n5n9m9i8hs58eh1vhllnsv9bpl7h5iq0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610524636818-4gv9el1kjnkj80n21q7rokhbk6dou4jd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.handsappuae.provider"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610524636818:android:0d068c115a6215db94284b",
+        "android_client_info": {
+          "package_name": "com.handsappuae.user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610524636818-2n7tqmc4c24l90j7klp7l7tg5ovuusp5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.handsappuae.user",
+            "certificate_hash": "34611a9dfa507151012a62b35049ca821eaaaad2"
+          }
+        },
+        {
+          "client_id": "610524636818-tkbaiqhufe9jotun1qpo11uk7e5ah532.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.handsappuae.user",
+            "certificate_hash": "7acf7c68f3b09d7dc4c805460584e1f9cbac25d6"
+          }
+        },
+        {
+          "client_id": "610524636818-n5n9m9i8hs58eh1vhllnsv9bpl7h5iq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuVi8O9a7QDpjBpZFhz7aPl2uanqeVLu0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610524636818-n5n9m9i8hs58eh1vhllnsv9bpl7h5iq0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610524636818-4gv9el1kjnkj80n21q7rokhbk6dou4jd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.handsappuae.provider"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

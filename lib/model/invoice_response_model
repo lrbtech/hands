@@ -1,0 +1,20 @@
+class InvoiceResponseModel {
+  String? message;
+  String? pdf;
+
+  InvoiceResponseModel({this.message, this.pdf});
+
+  factory InvoiceResponseModel.fromJson(Map<String, dynamic> json) {
+    return InvoiceResponseModel(
+      message: json['message'],
+      pdf: json['pdf'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['message'] = this.message;
+    data['pdf'] = this.pdf;
+    return data;
+  }
+}
