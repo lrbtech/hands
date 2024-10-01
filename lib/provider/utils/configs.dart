@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 const APP_NAME = 'Hands Provider';
 const DEFAULT_LANGUAGE = 'en';
 
-const primaryColor = Color(0xFF000000);
+const primaryColor = Color(0xFF000C2C);
 
-const DOMAIN_URL = 'https://handsappuae.com/secure-admin-panel'; // Don't add slash at the end of the url
+const DOMAIN_URL =
+    'https://handsappuae.com/secure-admin-panel'; // Don't add slash at the end of the url
 
 const BASE_URL = "$DOMAIN_URL/api/";
 

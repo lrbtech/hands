@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hands_user_app/component/cached_image_widget.dart';
@@ -222,7 +223,28 @@ class ProfileFragmentState extends State<ProfileFragment> {
                   //     ],
                   //   ),
                   // ),
-
+                  if (appStore.isLoggedIn && appStore.userType == "provider")
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20, bottom: 20),
+                      child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(10),
+                                topRight: Radius.circular(10),
+                              )),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 10, bottom: 10, right: 20, left: 15),
+                            child: Text(
+                              "Bookings",
+                              style: TextStyle(
+                                  color: primaryColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )),
+                    ),
                   Observer(builder: (context) {
                     return Column(
                       // title: Text(language.lblGENERAL, style: boldTextStyle(color: primaryColor)),
@@ -307,187 +329,249 @@ class ProfileFragmentState extends State<ProfileFragment> {
                               });
                             },
                           ),
-                        if (appStore.isLoggedIn)
-                          Divider(
-                            color:
-                                appStore.isDarkMode ? context.cardColor : null,
-                            thickness: 1,
-                            height: 0,
-                          ).paddingSymmetric(horizontal: 10),
+                        appStore.isLoggedIn && appStore.userType == "provider"
+                            ? Padding(
+                                padding: const EdgeInsets.only(top: 20),
+                                child: Divider(
+                                  color:
+                                      appStore.isDarkMode ? Colors.white : null,
+                                  thickness: 2,
+                                  height: 0,
+                                ).paddingSymmetric(horizontal: 10),
+                              )
+                            : Divider(
+                                color: appStore.isDarkMode
+                                    ? context.cardColor
+                                    : null,
+                                thickness: 1,
+                                height: 0,
+                              ).paddingSymmetric(horizontal: 10),
                         if (appStore.isLoggedIn &&
                             appStore.userType == "provider")
-                          Column(
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              // Bank account
-                              SettingItemWidget(
-                                leading: Image.asset(
-                                    'assets/icons/back_account.png',
-                                    height: 16,
-                                    width: 16,
-                                    color: appStore.isDarkMode
-                                        ? white
-                                        : gray.withOpacity(0.8)),
-                                title: languages.bankAccount,
-                                trailing: Icon(Icons.chevron_right,
-                                    color: appStore.isDarkMode
-                                        ? white
-                                        : gray.withOpacity(0.8),
-                                    size: 24),
-                                onTap: () {
-                                  BankAccountScreen().launch(context);
-                                },
-                              ),
-                              Divider(
-                                color: appStore.isDarkMode
-                                    ? context.cardColor
-                                    : null,
-                                thickness: 1,
-                                height: 0,
-                              ).paddingSymmetric(horizontal: 10),
-                              SettingItemWidget(
-                                leading: Image.asset(
-                                    'assets/icons/categories.png',
-                                    height: 16,
-                                    width: 16,
-                                    color: appStore.isDarkMode
-                                        ? white
-                                        : gray.withOpacity(0.8)),
-                                title: languages.myCategories,
-                                trailing: Icon(Icons.chevron_right,
-                                    color: appStore.isDarkMode
-                                        ? white
-                                        : gray.withOpacity(0.8),
-                                    size: 24),
-                                onTap: () {
-                                  CategoriesScreen().launch(context);
-                                },
-                              ),
-                              Divider(
-                                color: appStore.isDarkMode
-                                    ? context.cardColor
-                                    : null,
-                                thickness: 1,
-                                height: 0,
-                              ).paddingSymmetric(horizontal: 10),
-                              SettingItemWidget(
-                                leading: ic_document.iconImage(
-                                    size: SETTING_ICON_SIZE),
-                                title: language.myPostJobList,
-                                trailing: trailing,
-                                onTap: () async {
-                                  doIfLoggedIn(context, () {
-                                    // MyPostRequestListScreen().launch(context);
-                                    BookingFragment().launch(context);
-                                  });
-                                },
-                              ),
-                              Divider(
-                                color: appStore.isDarkMode
-                                    ? context.cardColor
-                                    : null,
-                                thickness: 1,
-                                height: 0,
-                              ).paddingSymmetric(horizontal: 10),
-                              SettingItemWidget(
-                                leading: Image.asset(
-                                    'assets/icons/ic_services_address.png',
-                                    height: 16,
-                                    width: 16,
-                                    color: appStore.isDarkMode
-                                        ? white
-                                        : gray.withOpacity(0.8)),
-                                title: languages.lblServiceAddress,
-                                trailing: Icon(Icons.chevron_right,
-                                    color: appStore.isDarkMode
-                                        ? white
-                                        : gray.withOpacity(0.8),
-                                    size: 24),
-                                onTap: () {
-                                  ServiceAddressesScreen().launch(context);
-                                },
-                              ),
-                              Divider(
-                                color: appStore.isDarkMode
-                                    ? context.cardColor
-                                    : null,
-                                thickness: 1,
-                                height: 0,
-                              ).paddingSymmetric(horizontal: 10),
-                              SettingItemWidget(
-                                leading: Image.asset(
-                                    "assets/icons/ic_fill_wallet.png",
-                                    height: 16,
-                                    width: 16,
-                                    color: appStore.isDarkMode
-                                        ? white
-                                        : gray.withOpacity(0.8)),
-                                title: languages.lblPayment,
-                                trailing: Icon(Icons.chevron_right,
-                                    color: appStore.isDarkMode
-                                        ? white
-                                        : gray.withOpacity(0.8),
-                                    size: 24),
-                                onTap: () {
-                                  ProviderPaymentFragment().launch(context);
-                                },
-                              ),
-                              Divider(
-                                color: appStore.isDarkMode
-                                    ? context.cardColor
-                                    : null,
-                                thickness: 1,
-                                height: 0,
-                              ).paddingSymmetric(horizontal: 10),
-                              SettingItemWidget(
-                                leading: Image.asset('assets/icons/ic_list.png',
-                                    height: 16,
-                                    width: 16,
-                                    color: appStore.isDarkMode
-                                        ? white
-                                        : gray.withOpacity(0.8)),
-                                title: languages.bidList,
-                                trailing: Icon(Icons.chevron_right,
-                                    color: appStore.isDarkMode
-                                        ? white
-                                        : gray.withOpacity(0.8),
-                                    size: 24),
-                                onTap: () {
-                                  BidListScreen().launch(context);
-                                },
-                              ),
-                              Divider(
-                                color: appStore.isDarkMode
-                                    ? context.cardColor
-                                    : null,
-                                thickness: 1,
-                                height: 0,
-                              ).paddingSymmetric(horizontal: 10),
-                              SettingItemWidget(
-                                leading: Image.asset(ic_document,
-                                    height: 16,
-                                    width: 16,
-                                    color: appStore.isDarkMode
-                                        ? white
-                                        : gray.withOpacity(0.8)),
-                                title: languages.btnVerifyId,
-                                trailing: Icon(Icons.chevron_right,
-                                    color: appStore.isDarkMode
-                                        ? white
-                                        : gray.withOpacity(0.8),
-                                    size: 24),
-                                onTap: () {
-                                  VerifyProviderScreen().launch(context);
-                                },
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 20, bottom: 20),
+                                child: Container(
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(10),
+                                          topRight: Radius.circular(10),
+                                        )),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 10,
+                                          bottom: 10,
+                                          right: 20,
+                                          left: 15),
+                                      child: Center(
+                                        child: Text(
+                                          "Jobs",
+                                          style: TextStyle(
+                                              color: primaryColor,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    )),
                               ),
                             ],
                           ),
                         if (appStore.isLoggedIn)
-                          Divider(
-                            color:
-                                appStore.isDarkMode ? context.cardColor : null,
-                            thickness: 1,
-                            height: 0,
-                          ).paddingSymmetric(horizontal: 10),
+                          if (appStore.isLoggedIn &&
+                              appStore.userType == "provider")
+                            Column(
+                              children: [
+                                SettingItemWidget(
+                                  leading: ic_document.iconImage(
+                                      size: SETTING_ICON_SIZE),
+                                  title: language.myPostJobList,
+                                  trailing: trailing,
+                                  onTap: () async {
+                                    doIfLoggedIn(context, () {
+                                      // MyPostRequestListScreen().launch(context);
+                                      BookingFragment().launch(context);
+                                    });
+                                  },
+                                ),
+                                Divider(
+                                  color: appStore.isDarkMode
+                                      ? context.cardColor
+                                      : null,
+                                  thickness: 1,
+                                  height: 0,
+                                ).paddingSymmetric(horizontal: 10),
+                                SettingItemWidget(
+                                  leading: Image.asset(
+                                      'assets/icons/ic_services_address.png',
+                                      height: 16,
+                                      width: 16,
+                                      color: appStore.isDarkMode
+                                          ? white
+                                          : gray.withOpacity(0.8)),
+                                  title: languages.lblServiceAddress,
+                                  trailing: Icon(Icons.chevron_right,
+                                      color: appStore.isDarkMode
+                                          ? white
+                                          : gray.withOpacity(0.8),
+                                      size: 24),
+                                  onTap: () {
+                                    ServiceAddressesScreen().launch(context);
+                                  },
+                                ),
+                                Divider(
+                                  color: appStore.isDarkMode
+                                      ? context.cardColor
+                                      : null,
+                                  thickness: 1,
+                                  height: 0,
+                                ).paddingSymmetric(horizontal: 10),
+
+                                SettingItemWidget(
+                                  leading: Image.asset(
+                                      'assets/icons/categories.png',
+                                      height: 16,
+                                      width: 16,
+                                      color: appStore.isDarkMode
+                                          ? white
+                                          : gray.withOpacity(0.8)),
+                                  title: languages.myCategories,
+                                  trailing: Icon(Icons.chevron_right,
+                                      color: appStore.isDarkMode
+                                          ? white
+                                          : gray.withOpacity(0.8),
+                                      size: 24),
+                                  onTap: () {
+                                    CategoriesScreen().launch(context);
+                                  },
+                                ),
+                                Divider(
+                                  color: appStore.isDarkMode
+                                      ? context.cardColor
+                                      : null,
+                                  thickness: 1,
+                                  height: 0,
+                                ).paddingSymmetric(horizontal: 10),
+
+                                SettingItemWidget(
+                                  leading: Image.asset(
+                                      'assets/icons/ic_list.png',
+                                      height: 16,
+                                      width: 16,
+                                      color: appStore.isDarkMode
+                                          ? white
+                                          : gray.withOpacity(0.8)),
+                                  title: languages.bidList,
+                                  trailing: Icon(Icons.chevron_right,
+                                      color: appStore.isDarkMode
+                                          ? white
+                                          : gray.withOpacity(0.8),
+                                      size: 24),
+                                  onTap: () {
+                                    BidListScreen().launch(context);
+                                  },
+                                ),
+                                Divider(
+                                  color: appStore.isDarkMode
+                                      ? context.cardColor
+                                      : null,
+                                  thickness: 1,
+                                  height: 0,
+                                ).paddingSymmetric(horizontal: 10),
+                                SettingItemWidget(
+                                  leading: Image.asset(ic_document,
+                                      height: 16,
+                                      width: 16,
+                                      color: appStore.isDarkMode
+                                          ? white
+                                          : gray.withOpacity(0.8)),
+                                  title: languages.btnVerifyId,
+                                  trailing: Icon(Icons.chevron_right,
+                                      color: appStore.isDarkMode
+                                          ? white
+                                          : gray.withOpacity(0.8),
+                                      size: 24),
+                                  onTap: () {
+                                    VerifyProviderScreen().launch(context);
+                                  },
+                                ),
+                                Divider(
+                                  color: appStore.isDarkMode
+                                      ? context.cardColor
+                                      : null,
+                                  thickness: 1,
+                                  height: 0,
+                                ).paddingSymmetric(horizontal: 10),
+                                // Bank account
+                                SettingItemWidget(
+                                  leading: Image.asset(
+                                      'assets/icons/back_account.png',
+                                      height: 16,
+                                      width: 16,
+                                      color: appStore.isDarkMode
+                                          ? white
+                                          : gray.withOpacity(0.8)),
+                                  title: languages.bankAccount,
+                                  trailing: Icon(Icons.chevron_right,
+                                      color: appStore.isDarkMode
+                                          ? white
+                                          : gray.withOpacity(0.8),
+                                      size: 24),
+                                  onTap: () {
+                                    BankAccountScreen().launch(context);
+                                  },
+                                ),
+
+                                Divider(
+                                  color: appStore.isDarkMode
+                                      ? context.cardColor
+                                      : null,
+                                  thickness: 1,
+                                  height: 0,
+                                ).paddingSymmetric(horizontal: 10),
+                                SettingItemWidget(
+                                  leading: Image.asset(
+                                      "assets/icons/ic_fill_wallet.png",
+                                      height: 16,
+                                      width: 16,
+                                      color: appStore.isDarkMode
+                                          ? white
+                                          : gray.withOpacity(0.8)),
+                                  title: languages.lblPayment,
+                                  trailing: Icon(Icons.chevron_right,
+                                      color: appStore.isDarkMode
+                                          ? white
+                                          : gray.withOpacity(0.8),
+                                      size: 24),
+                                  onTap: () {
+                                    ProviderPaymentFragment().launch(context);
+                                  },
+                                ),
+                              ],
+                            ),
+                        if (appStore.isLoggedIn)
+                          appStore.isLoggedIn && appStore.userType == "provider"
+                              ? Padding(
+                                  padding: const EdgeInsets.only(top: 20),
+                                  child: Divider(
+                                    color: appStore.isDarkMode
+                                        ? Colors.white
+                                        : null,
+                                    thickness: 2,
+                                    height: 0,
+                                  ).paddingSymmetric(horizontal: 10),
+                                )
+                              : Divider(
+                                  color: appStore.isDarkMode
+                                      ? context.cardColor
+                                      : null,
+                                  thickness: 1,
+                                  height: 0,
+                                ).paddingSymmetric(horizontal: 10),
                         // i\f (appStore.isLoggedIn)
                         //   Divider(
                         // color: appStore.isDarkMode ? context.cardColor :null,
@@ -504,11 +588,7 @@ class ProfileFragmentState extends State<ProfileFragment> {
                         //     });
                         //   },
                         // ),
-                        Divider(
-                          color: appStore.isDarkMode ? context.cardColor : null,
-                          thickness: 1,
-                          height: 0,
-                        ).paddingSymmetric(horizontal: 10),
+
                         // SettingItemWidget(
                         //   leading: ic_heart.iconImage(size: SETTING_ICON_SIZE),
                         //   title: language.favouriteProvider,
@@ -520,11 +600,6 @@ class ProfileFragmentState extends State<ProfileFragment> {
                         //   },
                         // ),
 
-                        Divider(
-                          color: appStore.isDarkMode ? context.cardColor : null,
-                          thickness: 1,
-                          height: 0,
-                        ).paddingSymmetric(horizontal: 10),
                         if (otherSettingStore.blogEnable.getBoolInt())
                           SettingItemWidget(
                             leading:
