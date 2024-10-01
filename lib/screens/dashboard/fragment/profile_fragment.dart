@@ -310,13 +310,7 @@ class ProfileFragmentState extends State<ProfileFragment> {
                               });
                             },
                           ),
-                        if (appStore.isLoggedIn)
-                          Divider(
-                            color:
-                                appStore.isDarkMode ? context.cardColor : null,
-                            thickness: 1,
-                            height: 0,
-                          ).paddingSymmetric(horizontal: 10),
+
                         if (appStore.isLoggedIn)
                           SettingItemWidget(
                             leading:
@@ -329,23 +323,17 @@ class ProfileFragmentState extends State<ProfileFragment> {
                               });
                             },
                           ),
-                        appStore.isLoggedIn && appStore.userType == "provider"
-                            ? Padding(
-                                padding: const EdgeInsets.only(top: 20),
-                                child: Divider(
-                                  color:
-                                      appStore.isDarkMode ? Colors.white : null,
-                                  thickness: 2,
-                                  height: 0,
-                                ).paddingSymmetric(horizontal: 10),
-                              )
-                            : Divider(
-                                color: appStore.isDarkMode
-                                    ? context.cardColor
-                                    : null,
-                                thickness: 1,
-                                height: 0,
-                              ).paddingSymmetric(horizontal: 10),
+                        if (appStore.isLoggedIn &&
+                            appStore.userType == "provider")
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20),
+                            child: Divider(
+                              color: appStore.isDarkMode ? Colors.white : null,
+                              thickness: 2,
+                              height: 0,
+                            ).paddingSymmetric(horizontal: 10),
+                          ),
+
                         if (appStore.isLoggedIn &&
                             appStore.userType == "provider")
                           Row(
@@ -398,13 +386,7 @@ class ProfileFragmentState extends State<ProfileFragment> {
                                     });
                                   },
                                 ),
-                                Divider(
-                                  color: appStore.isDarkMode
-                                      ? context.cardColor
-                                      : null,
-                                  thickness: 1,
-                                  height: 0,
-                                ).paddingSymmetric(horizontal: 10),
+
                                 SettingItemWidget(
                                   leading: Image.asset(
                                       'assets/icons/ic_services_address.png',
@@ -423,13 +405,6 @@ class ProfileFragmentState extends State<ProfileFragment> {
                                     ServiceAddressesScreen().launch(context);
                                   },
                                 ),
-                                Divider(
-                                  color: appStore.isDarkMode
-                                      ? context.cardColor
-                                      : null,
-                                  thickness: 1,
-                                  height: 0,
-                                ).paddingSymmetric(horizontal: 10),
 
                                 SettingItemWidget(
                                   leading: Image.asset(
@@ -449,13 +424,6 @@ class ProfileFragmentState extends State<ProfileFragment> {
                                     CategoriesScreen().launch(context);
                                   },
                                 ),
-                                Divider(
-                                  color: appStore.isDarkMode
-                                      ? context.cardColor
-                                      : null,
-                                  thickness: 1,
-                                  height: 0,
-                                ).paddingSymmetric(horizontal: 10),
 
                                 SettingItemWidget(
                                   leading: Image.asset(
@@ -475,13 +443,7 @@ class ProfileFragmentState extends State<ProfileFragment> {
                                     BidListScreen().launch(context);
                                   },
                                 ),
-                                Divider(
-                                  color: appStore.isDarkMode
-                                      ? context.cardColor
-                                      : null,
-                                  thickness: 1,
-                                  height: 0,
-                                ).paddingSymmetric(horizontal: 10),
+
                                 SettingItemWidget(
                                   leading: Image.asset(ic_document,
                                       height: 16,
@@ -499,13 +461,7 @@ class ProfileFragmentState extends State<ProfileFragment> {
                                     VerifyProviderScreen().launch(context);
                                   },
                                 ),
-                                Divider(
-                                  color: appStore.isDarkMode
-                                      ? context.cardColor
-                                      : null,
-                                  thickness: 1,
-                                  height: 0,
-                                ).paddingSymmetric(horizontal: 10),
+
                                 // Bank account
                                 SettingItemWidget(
                                   leading: Image.asset(
@@ -526,13 +482,6 @@ class ProfileFragmentState extends State<ProfileFragment> {
                                   },
                                 ),
 
-                                Divider(
-                                  color: appStore.isDarkMode
-                                      ? context.cardColor
-                                      : null,
-                                  thickness: 1,
-                                  height: 0,
-                                ).paddingSymmetric(horizontal: 10),
                                 SettingItemWidget(
                                   leading: Image.asset(
                                       "assets/icons/ic_fill_wallet.png",
@@ -554,24 +503,18 @@ class ProfileFragmentState extends State<ProfileFragment> {
                               ],
                             ),
                         if (appStore.isLoggedIn)
-                          appStore.isLoggedIn && appStore.userType == "provider"
-                              ? Padding(
-                                  padding: const EdgeInsets.only(top: 20),
-                                  child: Divider(
-                                    color: appStore.isDarkMode
-                                        ? Colors.white
-                                        : null,
-                                    thickness: 2,
-                                    height: 0,
-                                  ).paddingSymmetric(horizontal: 10),
-                                )
-                              : Divider(
-                                  color: appStore.isDarkMode
-                                      ? context.cardColor
-                                      : null,
-                                  thickness: 1,
-                                  height: 0,
-                                ).paddingSymmetric(horizontal: 10),
+                          if (appStore.isLoggedIn &&
+                              appStore.userType == "provider")
+                            Padding(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: Divider(
+                                color:
+                                    appStore.isDarkMode ? Colors.white : null,
+                                thickness: 2,
+                                height: 0,
+                              ).paddingSymmetric(horizontal: 10),
+                            ),
+
                         // i\f (appStore.isLoggedIn)
                         //   Divider(
                         // color: appStore.isDarkMode ? context.cardColor :null,
@@ -653,11 +596,6 @@ class ProfileFragmentState extends State<ProfileFragment> {
                         //   },
                         // ),
 
-                        Divider(
-                          color: appStore.isDarkMode ? context.cardColor : null,
-                          thickness: 1,
-                          height: 0,
-                        ).paddingSymmetric(horizontal: 10),
                         SettingItemWidget(
                           leading:
                               ic_about_us.iconImage(size: SETTING_ICON_SIZE),
@@ -668,11 +606,7 @@ class ProfileFragmentState extends State<ProfileFragment> {
                             AboutScreen().launch(context);
                           },
                         ),
-                        Divider(
-                          color: appStore.isDarkMode ? context.cardColor : null,
-                          thickness: 1,
-                          height: 0,
-                        ).paddingSymmetric(horizontal: 10),
+
                         SettingItemWidget(
                           leading:
                               ic_shield_done.iconImage(size: SETTING_ICON_SIZE),
@@ -695,11 +629,7 @@ class ProfileFragmentState extends State<ProfileFragment> {
                                 title: language.privacyPolicy);
                           },
                         ),
-                        Divider(
-                          color: appStore.isDarkMode ? context.cardColor : null,
-                          thickness: 1,
-                          height: 0,
-                        ).paddingSymmetric(horizontal: 10),
+
                         SettingItemWidget(
                           leading:
                               ic_document.iconImage(size: SETTING_ICON_SIZE),
@@ -722,11 +652,7 @@ class ProfileFragmentState extends State<ProfileFragment> {
                                 title: language.termsCondition);
                           },
                         ),
-                        Divider(
-                          color: appStore.isDarkMode ? context.cardColor : null,
-                          thickness: 1,
-                          height: 0,
-                        ).paddingSymmetric(horizontal: 10),
+
                         // if (appStore.inquiryEmail.isNotEmpty)
                         //   SettingItemWidget(
                         //     leading: ic_helpAndSupport.iconImage(size: SETTING_ICON_SIZE),
@@ -737,13 +663,13 @@ class ProfileFragmentState extends State<ProfileFragment> {
                         //     },
                         //   ),
 
-                        if (appStore.inquiryEmail.isNotEmpty)
-                          Divider(
-                            color:
-                                appStore.isDarkMode ? context.cardColor : null,
-                            thickness: 1,
-                            height: 0,
-                          ).paddingSymmetric(horizontal: 10),
+                        // if (appStore.inquiryEmail.isNotEmpty)
+                        //   Divider(
+                        //     color:
+                        //         appStore.isDarkMode ? context.cardColor : null,
+                        //     thickness: 1,
+                        //     height: 0,
+                        //   ).paddingSymmetric(horizontal: 10),
                         if (appStore.helplineNumber.isNotEmpty)
                           SettingItemWidget(
                             leading:
@@ -754,11 +680,6 @@ class ProfileFragmentState extends State<ProfileFragment> {
                               launchCall(appStore.helplineNumber.validate());
                             },
                           ),
-                        Divider(
-                          color: appStore.isDarkMode ? context.cardColor : null,
-                          thickness: 1,
-                          height: 0,
-                        ).paddingSymmetric(horizontal: 10),
 
                         // Contact form
                         SettingItemWidget(
@@ -772,13 +693,7 @@ class ProfileFragmentState extends State<ProfileFragment> {
                           },
                         ),
 
-                        if (appStore.helplineNumber.isNotEmpty)
-                          Divider(
-                            color:
-                                appStore.isDarkMode ? context.cardColor : null,
-                            thickness: 1,
-                            height: 0,
-                          ).paddingSymmetric(horizontal: 10),
+                        // if (appStore.helplineNumber.isNotEmpty)
                         SettingItemWidget(
                           leading: Icon(MaterialCommunityIcons.logout,
                               color: context.iconColor,
@@ -790,27 +705,27 @@ class ProfileFragmentState extends State<ProfileFragment> {
                             SignInScreen().launch(context);
                           },
                         ).visible(!appStore.isLoggedIn),
-                        if (!appStore.isLoggedIn)
-                          Divider(
-                            color:
-                                appStore.isDarkMode ? context.cardColor : null,
-                            thickness: 1,
-                            height: 0,
-                          ).paddingSymmetric(horizontal: 10),
+                        // if (!appStore.isLoggedIn)
+                        //   Divider(
+                        //     color:
+                        //         appStore.isDarkMode ? context.cardColor : null,
+                        //     thickness: 1,
+                        //     height: 0,
+                        //   ).paddingSymmetric(horizontal: 10),
                         Column(
                           // title: Text(language.lblDangerZone.toUpperCase(), style: boldTextStyle(color: redColor)),
                           // headingDecoration: BoxDecoration(color: redColor.withOpacity(0.08)),
                           // divider:
                           //color: appStore.isDarkMode ? context.cardColor :null, Offstage(),
                           children: [
-                            if (appStore.isLoggedIn)
-                              Divider(
-                                color: appStore.isDarkMode
-                                    ? context.cardColor
-                                    : null,
-                                thickness: 1,
-                                height: 0,
-                              ).paddingSymmetric(horizontal: 10),
+                            // if (appStore.isLoggedIn)
+                            //   Divider(
+                            //     color: appStore.isDarkMode
+                            //         ? context.cardColor
+                            //         : null,
+                            //     thickness: 1,
+                            //     height: 0,
+                            //   ).paddingSymmetric(horizontal: 10),
                             SettingItemWidget(
                               leading: Icon(MaterialCommunityIcons.logout,
                                   color: context.iconColor,
