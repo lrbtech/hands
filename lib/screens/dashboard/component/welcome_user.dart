@@ -21,15 +21,15 @@ class WelcomeUser extends StatelessWidget {
           Container(
             decoration: boxDecorationDefault(
               border:
-                  Border.all(color: context.scaffoldBackgroundColor, width: 4),
+                  Border.all(color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) , width: 0.5),
               shape: BoxShape.circle,
             ),
             child: CachedImageWidget(
               url: appStore.userProfileImage,
-              height: 44,
-              width: 44,
+              height: 45,
+              width: 45,
               fit: BoxFit.cover,
-              radius: 44 / 2,
+              radius: 45 / 2,
             ),
           ),
           10.width,
@@ -39,7 +39,7 @@ class WelcomeUser extends StatelessWidget {
             children: [
               Text(
                 language.lblWelcome + ' ,',
-                style: primaryTextStyle().copyWith(fontSize: 14, color: white),
+                style: primaryTextStyle().copyWith(fontSize: 14, color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ),
               ),
               Text(
                 (appStore.userFirstName == ''
@@ -48,7 +48,7 @@ class WelcomeUser extends StatelessWidget {
                             : 'Guest')
                         : appStore.userFirstName) +
                     ' !',
-                style: boldTextStyle().copyWith(fontSize: 18, color: white),
+                style: boldTextStyle().copyWith(fontSize: 18, color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C)),
               )
             ],
           ),
@@ -58,17 +58,17 @@ class WelcomeUser extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 // color: Theme.of(context).colorScheme.background,
-                color: primaryColor,
+                color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
                 boxShadow: const [
                   BoxShadow(
                       offset: Offset(0, 1.8),
-                      color: Colors.white54,
+                      color: Colors.grey,
                       spreadRadius: 0.2,
                       blurRadius: 1),
                 ],
               ),
-              height: 45,
-              width: 45,
+              height: 38,
+              width: 38,
               padding: EdgeInsets.all(4),
               child: Align(
                 alignment: Alignment.center,
@@ -77,7 +77,7 @@ class WelcomeUser extends StatelessWidget {
                   children: [
                     Icon(
                       Iconsax.notification,
-                      color: white,
+                      color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
                     ),
                     Observer(builder: (context) {
                       return Positioned(
@@ -89,7 +89,7 @@ class WelcomeUser extends StatelessWidget {
                                 child: FittedBox(
                                   child: Text(appStore.unreadCount.toString(),
                                       style: boldTextStyle(
-                                          size: 12, color: Colors.white)),
+                                          size: 12, color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C))),
                                 ),
                                 decoration: boxDecorationDefault(
                                     color: Color(0xFF20B08D),
@@ -104,7 +104,7 @@ class WelcomeUser extends StatelessWidget {
             ).onTap(() {
               NotificationScreen().launch(context);
             }, borderRadius: BorderRadius.circular(50)),
-          10.width
+          0.width
         ],
       ),
     );

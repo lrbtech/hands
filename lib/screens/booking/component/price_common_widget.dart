@@ -120,14 +120,14 @@ class PriceCommonWidget extends StatelessWidget {
                             Marquee(
                               child: Row(
                                 children: [
-                                  PriceWidget(price: bookingDetail.amount.validate(), size: 12, isBoldText: false, color: appTextSecondaryColor),
+                                  PriceWidget(price: bookingDetail.amount.validate(), size: 12, isBoldText: false, color: white),
                                   Text(' * ${bookingDetail.quantity != 0 ? bookingDetail.quantity : 1}  = ', style: secondaryTextStyle()),
-                                  PriceWidget(price: bookingDetail.finalTotalServicePrice.validate(), isBoldText: true, color: textPrimaryColorGlobal),
+                                  PriceWidget(price: bookingDetail.finalTotalServicePrice.validate(), isBoldText: true, color: white),
                                 ],
                               ),
                             )
                           else
-                            PriceWidget(price: bookingDetail.finalTotalServicePrice.validate(), color: textPrimaryColorGlobal, isBoldText: true),
+                            PriceWidget(price: bookingDetail.finalTotalServicePrice.validate(), color: white, isBoldText: true),
                         ],
                       ),
                       Divider(height: 26, color: context.dividerColor),
@@ -170,7 +170,7 @@ class PriceCommonWidget extends StatelessWidget {
                       children: [
                         Text(language.jobPrice, style: secondaryTextStyle(size: 14)),
                         16.width,
-                        PriceWidget(price: bookingDetail.amount.validate(), color: appStore.isDarkMode ? white : primaryColor, isBoldText: true),
+                        PriceWidget(price: bookingDetail.amount.validate(), color: white , isBoldText: true),
                       ],
                     ),
                     Divider(height: 26, color: context.dividerColor),
@@ -183,7 +183,7 @@ class PriceCommonWidget extends StatelessWidget {
                       Row(
                         children: [
                           Text(language.lblCoupon, style: secondaryTextStyle(size: 14)),
-                          Text(" (${couponData!.code})", style: boldTextStyle(size: 14, color: primaryColor)).expand(),
+                          Text(" (${couponData!.code})", style: boldTextStyle(size: 14, color: white)).expand(),
                           Text(
                             '${getCouponPrice(
                               coupon: couponData!,
@@ -216,7 +216,7 @@ class PriceCommonWidget extends StatelessWidget {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text(language.serviceAddOns, style: secondaryTextStyle(size: 14)).flexible(fit: FlexFit.loose), 16.width, PriceWidget(price: bookingDetail.serviceaddon.validate().sumByDouble((p0) => p0.price), color: textPrimaryColorGlobal)],
+                        children: [Text(language.serviceAddOns, style: secondaryTextStyle(size: 14)).flexible(fit: FlexFit.loose), 16.width, PriceWidget(price: bookingDetail.serviceaddon.validate().sumByDouble((p0) => p0.price), color: white)],
                       ),
                       Divider(height: 26, color: context.dividerColor),
                     ],
@@ -230,7 +230,7 @@ class PriceCommonWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(language.lblSubTotal, style: secondaryTextStyle(size: 14)).flexible(fit: FlexFit.loose),
-                          PriceWidget(price: bookingDetail.finalSubTotal.validate(), color: textPrimaryColorGlobal, isBoldText: true),
+                          PriceWidget(price: bookingDetail.finalSubTotal.validate(), color: white, isBoldText: true),
                         ],
                       ),
                       Divider(height: 26, color: context.dividerColor),
@@ -243,7 +243,7 @@ class PriceCommonWidget extends StatelessWidget {
                       Row(
                         children: [
                           Text(language.lblTotalExtraCharges, style: secondaryTextStyle(size: 14)).expand(),
-                          PriceWidget(price: bookingDetail.totalExtraChargeAmount, color: textPrimaryColorGlobal),
+                          PriceWidget(price: bookingDetail.totalExtraChargeAmount, color: white),
                         ],
                       ),
                       Divider(height: 26, color: context.dividerColor),
@@ -297,7 +297,7 @@ class PriceCommonWidget extends StatelessWidget {
                             '${bookingDetail.tipAmount.validate().toStringAsFixed(2)}${appStore.currencySymbol}',
                             style: boldTextStyle(
                               size: 16,
-                              color: appStore.isDarkMode ? white : primaryColor,
+                              color: white ,
                             ),
                           ),
                           // PriceWidget(price: bookingDetail.tipAmount.validate(), color: Colors.green, isBoldText: true),
@@ -328,7 +328,7 @@ class PriceCommonWidget extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text('(', style: secondaryTextStyle()),
-                                PriceWidget(price: bookingDetail.amount.validate(), color: appTextSecondaryColor, size: 14, isBoldText: false),
+                                PriceWidget(price: bookingDetail.amount.validate(), color: white, size: 14, isBoldText: false),
                                 Text('/${language.lblHr})', style: secondaryTextStyle()),
                               ],
                             ),
@@ -341,7 +341,7 @@ class PriceCommonWidget extends StatelessWidget {
                                   ) + (bookingDetail.tipAmount.validate() != 0 ? bookingDetail.tipAmount.validate() : 0)).toStringAsFixed(2)}${appStore.currencySymbol}',
                               style: boldTextStyle(
                                 size: 16,
-                                color: appStore.isDarkMode ? white : primaryColor,
+                                color: white ,
                               ),
                             ),
                           // PriceWidget(
@@ -358,7 +358,7 @@ class PriceCommonWidget extends StatelessWidget {
                               '${(bookingDetail.totalAmount.validate() + (bookingDetail.tipAmount.validate() != 0 ? bookingDetail.tipAmount.validate() : 0)).toStringAsFixed(2)}${appStore.currencySymbol}',
                               style: boldTextStyle(
                                 size: 16,
-                                color: appStore.isDarkMode ? white : primaryColor,
+                                color: white,
                               ),
                             ),
                           // PriceWidget(

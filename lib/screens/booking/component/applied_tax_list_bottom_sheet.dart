@@ -43,7 +43,7 @@ class AppliedTaxListBottomSheet extends StatelessWidget {
                             // Text('• ', style: secondaryTextStyle(size: 14)),
                             Text(data.title.validate(), style: secondaryTextStyle(size: 14)),
                             4.width,
-                            Text("(${data.value.validate()}%)", style: secondaryTextStyle(color: context.primaryColor, size: 14)),
+                            Text("(${data.value.validate()}%)", style: secondaryTextStyle(color: white, size: 14)),
                           ],
                         ).expand()
                       : Row(
@@ -56,7 +56,7 @@ class AppliedTaxListBottomSheet extends StatelessWidget {
                     price: data.totalCalculatedValue.validate(),
                     // isBoldText: false,
                     // size: 14,
-                    // color: redColor,
+                    color: whiteColor,
                   ),
                 ],
               );

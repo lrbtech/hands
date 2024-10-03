@@ -42,7 +42,7 @@ class ChartComponent extends StatelessWidget {
         title: ChartTitle(
           textStyle: secondaryTextStyle(),
         ),
-        backgroundColor: primaryColor,
+        backgroundColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
         primaryYAxis: NumericAxis(
             numberFormat: NumberFormat.compactCurrency(
                 symbol: appStore.currencySymbol, decimalDigits: 2)),
@@ -68,7 +68,7 @@ class ChartComponent extends StatelessWidget {
             name: languages.lblRevenue,
             dataSource: chartData,
             enableTooltip: true,
-            color: Colors.white,
+            color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
             legendIconType: LegendIconType.diamond,
             splineType: SplineType.monotonic,
             yValueMapper: (RevenueChartData sales, _) => sales.revenue,

@@ -666,9 +666,7 @@ class _CreatePostRequestScreenState extends State<CreatePostRequestScreen> {
                                           child: Text(
                                             text,
                                             style: primaryTextStyle(
-                                              color: appStore.isDarkMode
-                                                  ? white
-                                                  : context.primaryColor,
+                                              color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
                                             ),
                                           ),
                                         ),
@@ -679,17 +677,13 @@ class _CreatePostRequestScreenState extends State<CreatePostRequestScreen> {
                                         expandedFillColor:
                                             context.scaffoldBackgroundColor,
                                         listItemStyle: primaryTextStyle(
-                                          color: appStore.isDarkMode
-                                              ? white
-                                              : context.primaryColor,
+                                          color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
                                         ),
                                         listItemDecoration: ListItemDecoration(
                                           selectedColor: greenColor,
                                         ),
                                         headerStyle: primaryTextStyle(
-                                          color: appStore.isDarkMode
-                                              ? white
-                                              : context.primaryColor,
+                                          color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
                                         ),
                                       ),
                                       onChanged: (value) {
@@ -812,14 +806,14 @@ class _CreatePostRequestScreenState extends State<CreatePostRequestScreen> {
                                   Container(
                                     width: 200,
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
                                       borderRadius: BorderRadius.circular(15),
                                     ),
                                     child: memberSelect(
                                       context: context,
-                                      activeColor: primaryColor,
+                                      activeColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
                                       selectedGender: _selectedMember,
-                                      textColor: primaryColor,
+                                      textColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
                                       onChanged: (String? value) {
                                         setState(() {
                                           _selectedMember = value;
@@ -853,7 +847,7 @@ class _CreatePostRequestScreenState extends State<CreatePostRequestScreen> {
                                               height: 40,
                                               width: 120,
                                               decoration: BoxDecoration(
-                                                color: Colors.white,
+                                                color: Color(0xFFFAF9F6),
                                                 borderRadius:
                                                     BorderRadius.circular(15),
                                               ),
@@ -923,9 +917,9 @@ class _CreatePostRequestScreenState extends State<CreatePostRequestScreen> {
                                                       'en'
                                                   ? 'Find Hands'
                                                   : 'إبحث الآن'),
-                                          style: boldTextStyle(color: black),
+                                          style: boldTextStyle(color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6)),
                                         ),
-                                        color: white,
+                                        color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                                         elevation: 5,
                                         onTap: () {
                                           if (appStore.currentBookingStep ==
@@ -980,14 +974,14 @@ class _CreatePostRequestScreenState extends State<CreatePostRequestScreen> {
                                 Container(
                                   width: 200,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                   child: offerSelect(
                                     context: context,
-                                    activeColor: primaryColor,
+                                    activeColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
                                     selectedGender: _selectedOffer,
-                                    textColor: primaryColor,
+                                    textColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
                                     onChanged: (String? value) {
                                       setState(() {
                                         _selectedOffer = value;
@@ -1106,7 +1100,7 @@ class _CreatePostRequestScreenState extends State<CreatePostRequestScreen> {
                                     children: [
                                       Icon(
                                         Iconsax.calendar,
-                                        color: primaryColor,
+                                        color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
                                       ),
                                       10.width,
                                       Text(
@@ -1259,7 +1253,7 @@ class _CreatePostRequestScreenState extends State<CreatePostRequestScreen> {
                                             children: [
                                               Icon(
                                                 Iconsax.clock,
-                                                color: primaryColor,
+                                                color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
                                               ),
                                               10.width,
                                               Text(
@@ -1566,9 +1560,9 @@ class _CreatePostRequestScreenState extends State<CreatePostRequestScreen> {
                                                   'en'
                                               ? 'Find Hands'
                                               : 'إبحث الآن'),
-                                      style: boldTextStyle(color: black),
+                                      style: boldTextStyle(color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6)),
                                     ),
-                                    color: white,
+                                    color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                                     elevation: 5,
                                     onTap: () {
                                       if (appStore.currentBookingStep == 0) {

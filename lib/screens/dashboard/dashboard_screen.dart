@@ -217,7 +217,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         item: ItemConfig(
           icon: Icon(Iconsax.home),
           title: language.home,
-          activeForegroundColor: Colors.white,
+          activeForegroundColor: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
           inactiveForegroundColor: grey,
         ),
       ),
@@ -231,14 +231,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
         item: ItemConfig(
           icon: Icon(
             Icons.abc,
-            color: primaryColor,
+            color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
           ),
           // icon: Image.asset(
           //   'assets/ic_logo.png',
           // ),
           //title: language.booking,
           title: " ",
-          activeForegroundColor: primaryColor,
+          activeForegroundColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
           inactiveForegroundColor: grey,
         ),
       ),
@@ -247,7 +247,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           item: ItemConfig(
             icon: Icon(Iconsax.user),
             title: language.profile,
-            activeForegroundColor: Colors.white,
+            activeForegroundColor: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
             inactiveForegroundColor: grey,
           )),
       // PersistentBottomNavBarItem(
@@ -436,7 +436,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         navBarBuilder: (navBarConfig) => Style15BottomNavBar(
             navBarConfig: navBarConfig,
             navBarDecoration: NavBarDecoration(
-              color: primaryColor,
+              color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
               // border: Border(top: BorderSide(color: Colors.grey, width: 0.5)),
               boxShadow: [
                 BoxShadow(

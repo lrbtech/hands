@@ -59,6 +59,7 @@ import '../component/new_job_request_component.dart';
 import 'package:appinio_swiper/appinio_swiper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+import 'package:hands_user_app/screens/provider/Colors.dart';
 
 class DashboardFragment extends StatefulWidget {
   @override
@@ -76,7 +77,7 @@ class _DashboardFragmentState extends State<DashboardFragment> {
   bool isApiCalled = false;
 
   get commonDecoration => null;
-  int? currentState = 0;
+  int? currentState = 1;
   final List list = [
     {
       "image": "slider1.png",
@@ -104,7 +105,7 @@ class _DashboardFragmentState extends State<DashboardFragment> {
     init();
     // getLocation();
 
-    setStatusBarColor(primaryColor,
+    setStatusBarColor(appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
         statusBarIconBrightness: Brightness.light, delayInMilliSeconds: 800);
 
     LiveStream().on(LIVESTREAM_UPDATE_DASHBOARD, (p0) {
@@ -282,10 +283,10 @@ class _DashboardFragmentState extends State<DashboardFragment> {
         width: MediaQuery.of(context).size.width,
         height: 100,
         decoration: BoxDecoration(
-          color: primaryColor,
+          color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
-            BoxShadow(color: Colors.white54, spreadRadius: 0.1, blurRadius: 3)
+            BoxShadow(color: AppColors.greylight , spreadRadius: 0.1, blurRadius: 3)
           ],
         ),
         child: Padding(
@@ -298,7 +299,7 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                 textAlign: TextAlign.center,
                 "Start Earning Money by Helping People!",
                 style: boldTextStyle(
-                    color: appStore.isDarkMode ? white : context.primaryColor,
+                    color: appStore.isDarkMode ? Color(0xFFFAF9F6) : Color(0xFF000C2C),
                     size: 14,
                     weight: FontWeight.bold),
               ),
@@ -314,7 +315,7 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: appStore.isDarkMode ? Color(0xFFFAF9F6) : Color(0xFF000C2C),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
@@ -322,7 +323,7 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                         top: 7, bottom: 7, left: 30, right: 30),
                     child: Text("Become a Provider",
                         style: boldTextStyle(
-                            color: Colors.black,
+                            color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6) ,
                             size: 12,
                             weight: FontWeight.bold)),
                   ),
@@ -390,10 +391,10 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                                 bottomLeft: Radius.circular(30),
                                 bottomRight: Radius.circular(30),
                               ),
-                              color: primaryColor,
+                              color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
                               boxShadow: [
                                 BoxShadow(
-                                    color: Colors.white54,
+                                    color: AppColors.greylight,
                                     spreadRadius: 0.1,
                                     blurRadius: 3)
                               ]),
@@ -449,21 +450,21 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                               //   ),
                               // ),
                               Padding(
-                                padding: EdgeInsets.only(top: 40),
+                                padding: EdgeInsets.only(top: 30),
                                 child: Column(
                                   children: [
                                     WelcomeUser()
-                                        .paddingSymmetric(horizontal: 10),
+                                        .paddingSymmetric(horizontal: 24),
                                     if (appStore.isLoggedIn)
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            horizontal: 10.0),
+                                            horizontal: 24.0),
                                         child: Row(
                                           children: [
                                             Observer(
                                               builder: (context) {
                                                 return AppButton(
-                                                  color: Colors.white,
+                                                  color: appStore.isDarkMode ? Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
                                                   // width: context.width(),
                                                   shapeBorder:
                                                       RoundedRectangleBorder(
@@ -571,7 +572,7 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                                           ],
                                         ),
                                       ),
-                                    50.height,
+                                    32.height,
                                     // CategoryComponent(categoryList: snap.category.validate()),
                                     // 50.height,
                                   ],
@@ -737,7 +738,7 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                         // ),
                         // 10.height,
                         Container(
-                          padding: EdgeInsets.only(left: 10, right: 10, top: 0),
+                          padding: EdgeInsets.only(left: 8, right: 8, top: 0),
                           child: SizedBox(
                             // height: MediaQuery.of(context).size.height -
                             //     MediaQuery.of(context).size.height * 0.3,
@@ -761,12 +762,12 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                                           //     MediaQuery.of(context).size.height *
                                           //         0.3,
                                           decoration: BoxDecoration(
-                                            color: primaryColor,
+                                            color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                             boxShadow: [
                                               BoxShadow(
-                                                  color: Colors.white54,
+                                                  color: AppColors.greylight ,
                                                   spreadRadius: 0.1,
                                                   blurRadius: 3)
                                             ],
@@ -794,8 +795,8 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                                                                 : Alignment
                                                                     .centerLeft,
                                                         child: Container(
-                                                          width: 30,
-                                                          height: 100,
+                                                          width: 26,
+                                                          height: 120,
                                                           decoration:
                                                               BoxDecoration(
                                                             color: slider[
@@ -814,16 +815,16 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                                                                     ? BorderRadius
                                                                         .only(
                                                                         bottomLeft:
-                                                                            Radius.circular(30),
+                                                                            Radius.circular(20),
                                                                         topLeft:
-                                                                            Radius.circular(30),
+                                                                            Radius.circular(20),
                                                                       )
                                                                     : BorderRadius
                                                                         .only(
                                                                         bottomRight:
-                                                                            Radius.circular(30),
+                                                                            Radius.circular(20),
                                                                         topRight:
-                                                                            Radius.circular(30),
+                                                                            Radius.circular(20),
                                                                       ),
                                                           ),
                                                           child: Padding(
@@ -832,8 +833,8 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                                                                     .only(
                                                                     top: 0,
                                                                     bottom: 0,
-                                                                    left: 0,
-                                                                    right: 10),
+                                                                    left: 5,
+                                                                    right: 5),
                                                             child: RotatedBox(
                                                               quarterTurns: 1,
                                                               child: Text(
@@ -842,13 +843,8 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                                                                       TextAlign
                                                                           .center,
                                                                   style: boldTextStyle(
-                                                                      color: slider["color"] ==
-                                                                              "black"
-                                                                          ? Colors
-                                                                              .white
-                                                                          : Colors
-                                                                              .black,
-                                                                      size: 10,
+                                                                      color:  Colors.white,
+                                                                      size: 13,
                                                                       weight: FontWeight
                                                                           .bold)),
                                                             ),
@@ -873,7 +869,7 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                                                             TextAlign.center,
                                                         style: TextStyle(
                                                           fontFamily: 'Satoshi',
-                                                          color: white,
+                                                          color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C)  ,
                                                           fontSize: 24.0,
                                                           fontWeight:
                                                               FontWeight.bold,
@@ -882,12 +878,13 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  16.0,
-                                                                  0.0,
-                                                                  0.0),
+                                                          // EdgeInsetsDirectional
+                                                          //     .fromSTEB(
+                                                          //         0.0,
+                                                          //         16.0,
+                                                          //         0.0,
+                                                          //         0.0),
+                                                          const EdgeInsets.only(top:0,bottom: 0,left: 65, right: 65),
                                                       child: GestureDetector(
                                                         onTap: () {
                                                           if (loc_index == 0) {
@@ -930,30 +927,30 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                                                           }
                                                         },
                                                         child: Container(
-                                                          width: 110.0,
-                                                          height: 35.0,
+                                                          width: 140.0,
+                                                          height: 46.0,
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: white,
+                                                            color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
                                                                         6.0),
                                                           ),
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
+                                                          alignment: Alignment.center,
+                                                             // AlignmentDirectional(
+                                                                 // 0.0, 0.0),
                                                           child: Text(
                                                             "${slider['button']}",
                                                             style: TextStyle(
                                                               fontFamily:
                                                                   'Urbanist',
                                                               color:
-                                                                  Colors.black,
-                                                              fontSize: 12.0,
+                                                                  appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
+                                                              fontSize: 16.0,
                                                               fontWeight:
                                                                   FontWeight
-                                                                      .bold,
+                                                                      .w500,
                                                             ),
                                                           ),
                                                         ),

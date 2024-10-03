@@ -28,6 +28,7 @@ import '../../components/base_scaffold_widget.dart';
 import '../../components/empty_error_state_widget.dart';
 import 'components/job_item_widget.dart';
 import 'models/post_job_data.dart';
+import 'package:hands_user_app/main.dart';
 
 class JobListScreen extends StatefulWidget {
   @override
@@ -203,8 +204,8 @@ class _JobListScreenState extends State<JobListScreen> {
           languages.exploreJobs,
           // (1 == 1 ? languages.bidList : languages.jobRequestList),
         ][2],
-        color: primaryColor,
-        textColor: Colors.white,
+        color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
+        textColor: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
         showBack: false,
         actions: [
           GestureDetector(
@@ -215,7 +216,7 @@ class _JobListScreenState extends State<JobListScreen> {
                 builder: (context) => AlertDialog(
                   // co
                   insetPadding: EdgeInsets.all(20),
-                  backgroundColor: white,
+                  backgroundColor: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                   // scrollable: true,
                   // scr
                   titlePadding: EdgeInsets.all(20),
@@ -250,10 +251,10 @@ class _JobListScreenState extends State<JobListScreen> {
                                 },
                                 child: CircleAvatar(
                                   radius: 15,
-                                  backgroundColor: black,
+                                  backgroundColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
                                   child: Icon(
                                     Icons.close,
-                                    color: white,
+                                    color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                                   ),
                                 ),
                               ),
@@ -276,9 +277,7 @@ class _JobListScreenState extends State<JobListScreen> {
                                   child: Text(
                                     text,
                                     style: primaryTextStyle(
-                                      color: appStorePro.isDarkMode
-                                          ? white
-                                          : context.primaryColor,
+                                      color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                                     ),
                                   ),
                                 ),
@@ -288,17 +287,13 @@ class _JobListScreenState extends State<JobListScreen> {
                                 expandedFillColor:
                                     context.scaffoldBackgroundColor,
                                 listItemStyle: primaryTextStyle(
-                                  color: appStorePro.isDarkMode
-                                      ? white
-                                      : context.primaryColor,
+                                  color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                                 ),
                                 listItemDecoration: ListItemDecoration(
                                   selectedColor: greenColor,
                                 ),
                                 headerStyle: primaryTextStyle(
-                                  color: appStorePro.isDarkMode
-                                      ? white
-                                      : context.primaryColor,
+                                  color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                                 ),
                               ),
                               onChanged: (value) async {
@@ -398,11 +393,11 @@ class _JobListScreenState extends State<JobListScreen> {
                 vertical: 4,
               ),
               decoration: BoxDecoration(
-                color: white,
+                color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: filter.iconImage(
-                  color: black, size: 20, fit: BoxFit.fitHeight),
+                  color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) , size: 20, fit: BoxFit.fitHeight),
             ),
           ),
           14.width,
@@ -416,7 +411,7 @@ class _JobListScreenState extends State<JobListScreen> {
                 builder: (context) => AlertDialog(
                   // co
                   insetPadding: EdgeInsets.all(20),
-                  backgroundColor: white,
+                  backgroundColor: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                   // scrollable: true,
                   // scr
                   titlePadding: EdgeInsets.all(20),
@@ -439,7 +434,7 @@ class _JobListScreenState extends State<JobListScreen> {
                             children: [
                               Text(
                                 languages.filterByTitle,
-                                style: boldTextStyle(color: black),
+                                style: boldTextStyle(color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6)),
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -447,10 +442,10 @@ class _JobListScreenState extends State<JobListScreen> {
                                 },
                                 child: CircleAvatar(
                                   radius: 15,
-                                  backgroundColor: black,
+                                  backgroundColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
                                   child: Icon(
                                     Icons.close,
-                                    color: white,
+                                    color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                                   ),
                                 ),
                               ),
@@ -581,18 +576,18 @@ class _JobListScreenState extends State<JobListScreen> {
                 vertical: 4,
               ),
               decoration: BoxDecoration(
-                color: white,
+                color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                 borderRadius: BorderRadius.circular(20),
               ),
               child:
-                  sort.iconImage(color: black, size: 20, fit: BoxFit.fitHeight),
+                  sort.iconImage(color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6), size: 20, fit: BoxFit.fitHeight),
             ),
           ),
           IconButton(
             icon: Stack(
               clipBehavior: Clip.none,
               children: [
-                ic_notification.iconImage(color: white, size: 20),
+                ic_notification.iconImage(color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C), size: 20),
                 Positioned(
                   top: -14,
                   right: -6,
@@ -605,7 +600,7 @@ class _JobListScreenState extends State<JobListScreen> {
                             child: Text(
                                 appStorePro.notificationCount.toString(),
                                 style: primaryTextStyle(
-                                    size: 12, color: Colors.white)),
+                                    size: 12, color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) )),
                           ),
                           decoration: boxDecorationDefault(
                               color: Colors.red, shape: BoxShape.circle),

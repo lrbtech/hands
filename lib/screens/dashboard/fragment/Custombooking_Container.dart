@@ -3,12 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hands_user_app/screens/provider/Colors.dart';
 import 'package:hands_user_app/screens/provider/Widgets/Image_Urls.dart';
 import 'package:hands_user_app/utils/colors.dart';
+import 'package:hands_user_app/main.dart';
 
 Widget custombookingContainer(BuildContext context, int totalJobs, num today) {
   return Container(
-    color: primaryColor,
+    color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
     child: Padding(
-      padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+      padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -23,7 +24,7 @@ Widget custombookingContainer(BuildContext context, int totalJobs, num today) {
               assetPath: AppIcons.fireIcon,
               title: "Total Jobs",
               value: "${totalJobs}",
-              valueColor: Theme.of(context).colorScheme.onSecondary),
+              valueColor: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ),
         ],
       ),
     ),
@@ -42,7 +43,7 @@ Widget doublecontainer({
     height: 117,
     width: width - width * 0.58,
     decoration: BoxDecoration(
-      color: primaryColor,
+      color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
       borderRadius: BorderRadius.circular(16.0),
       boxShadow: const [
         BoxShadow(
@@ -67,7 +68,7 @@ Widget doublecontainer({
               style: GoogleFonts.balooBhaina2(
                 fontSize: 15,
                 fontWeight: FontWeight.w400,
-                color: Theme.of(context).colorScheme.onSecondary,
+                color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
               ),
             ),
           ],

@@ -88,7 +88,7 @@ class _BookingFragmentState extends State<BookingFragment> {
         showBack: false,
         textSize: APP_BAR_TEXT_SIZE,
         elevation: 0.0,
-        color: appStore.isDarkMode ? context.primaryColor : white,
+        color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),//appStore.isDarkMode ? context.primaryColor : white,
       ),
       body: SizedBox(
         width: context.width(),

@@ -634,7 +634,7 @@ class _BookServiceScreenState extends State<BookServiceScreen> {
                                 isBoldText: false,
                                 color: textSecondaryColorGlobal),
                             Text(' * $itemCount  = ',
-                                style: secondaryTextStyle()),
+                                style: secondaryTextStyle(color: white)),
                             PriceWidget(
                                 price:
                                     bookingAmountModel.finalTotalServicePrice,

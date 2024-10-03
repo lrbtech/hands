@@ -43,7 +43,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       appBarTitle: language.lblNotification,
       actions: [
         IconButton(
-          icon: Icon(Icons.clear_all_rounded, color: Colors.white),
+          icon: Icon(Icons.clear_all_rounded, color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ),
           onPressed: () async {
             appStore.setLoading(true);
 

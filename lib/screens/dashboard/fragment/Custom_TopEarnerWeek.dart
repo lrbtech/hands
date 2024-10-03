@@ -3,15 +3,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hands_user_app/screens/provider/Colors.dart';
 import 'package:hands_user_app/screens/provider/Widgets/Image_Urls.dart';
 import 'package:hands_user_app/utils/colors.dart';
+import 'package:hands_user_app/main.dart';
 
 Widget customTopearnerWeek(BuildContext context) {
   return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+    padding: const EdgeInsets.only(top: 30,bottom: 20,right: 10, left: 10),
     child: Container(
       height: 175,
       width: 371,
       decoration: BoxDecoration(
-        color: primaryColor,
+        color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
         borderRadius: BorderRadius.circular(15),
         boxShadow: const [
           BoxShadow(
@@ -39,7 +40,7 @@ Widget customTopearnerWeek(BuildContext context) {
                   style: GoogleFonts.almarai(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
-                    color: Theme.of(context).colorScheme.onSecondary,
+                    color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
                   ),
                 ),
                 const SizedBox(height: 20),

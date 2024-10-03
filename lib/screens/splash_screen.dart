@@ -152,7 +152,7 @@ class _SplashScreenState extends State<SplashScreen> {
                               TypewriterAnimatedText(
                                 language.splashSlogan,
                                 textStyle: boldTextStyle(
-                                  color: black,
+                                  color: Color(0xFF000C2C),
                                   size: 24,
                                 ),
                                 speed: 100.milliseconds,

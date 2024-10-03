@@ -293,7 +293,7 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
         ),
         Text('#' + widget.bookingId.validate().toString(),
             style: boldTextStyle(
-                color: appStore.isDarkMode ? white : primaryColor,
+                color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),//appStore.isDarkMode ? white : primaryColor,
                 size: LABEL_TEXT_SIZE)),
       ],
     );
@@ -914,20 +914,20 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
               data.bookingDetail!.addressDetails!.longitude != null)
             AppButton(
               width: context.width(),
-              color: primaryColor,
+              color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
                     Iconsax.map,
-                    color: white,
+                    color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
                   ),
                   10.width,
                   Text(
                     appStore.selectedLanguageCode == 'en'
                         ? 'Show location on map'
                         : 'عرض الموقع على الخريطة',
-                    style: boldTextStyle(color: white),
+                    style: boldTextStyle(color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ),
                   )
                 ],
               ),
@@ -2019,15 +2019,13 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
                                   padding: EdgeInsets.all(12),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(100),
-                                    color: context.cardColor,
+                                    color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
                                   ),
                                   child: Center(
                                     child: Text(
                                       language.contactUsOnWhatsApp,
                                       style: boldTextStyle(
-                                        color: appStore.isDarkMode
-                                            ? white
-                                            : context.primaryColor,
+                                        color: appStore.isDarkMode ?  Color(0xFF000C2C) : Color(0xFFFAF9F6)  ,
                                         size: 12,
                                       ),
                                     ),
