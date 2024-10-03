@@ -884,7 +884,7 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                                                           //         16.0,
                                                           //         0.0,
                                                           //         0.0),
-                                                          const EdgeInsets.only(top:0,bottom: 0,left: 65, right: 65),
+                                                          const EdgeInsets.only(top:0,bottom: 0,left: 50, right: 50),
                                                       child: GestureDetector(
                                                         onTap: () {
                                                           if (loc_index == 0) {

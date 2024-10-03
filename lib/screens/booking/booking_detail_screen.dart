@@ -293,7 +293,7 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
         ),
         Text('#' + widget.bookingId.validate().toString(),
             style: boldTextStyle(
-                color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),//appStore.isDarkMode ? white : primaryColor,
+                color: appStore.isDarkMode ? white : primaryColor,
                 size: LABEL_TEXT_SIZE)),
       ],
     );
