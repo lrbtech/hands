@@ -163,8 +163,8 @@ class _OTPLoginScreenState extends State<OTPLoginScreen> {
             sendOTP();
           },
           text: language.btnSendOtp,
-          color: white,
-          textColor: primaryColor,
+          color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
+          textColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
           width: context.width(),
         ),
         16.height,

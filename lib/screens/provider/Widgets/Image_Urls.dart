@@ -9,7 +9,7 @@ class AppIcons {
   static const String logoIcon = 'assets/icons/ic_logo.png';
   static const String notificationIcon = 'assets/icons/ic_notification.png';
   static const String phoneIcon = 'assets/icons/ic_Phone.png';
-  static const String profileIcon = 'assets/icons/ic_profile.png';
+  static const String profileIcon = 'assets/icons/ic_logo.png';//'assets/icons/ic_profile.png';
   static const String viewpassIcon = 'assets/icons/ic_viewpass.png';
   static const String homeIcon = "assets/icons/ic_home.png";
   static const String handIcon = "assets/icons/ic_hand.png";

@@ -1,6 +1,7 @@
 import 'package:hands_user_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:hands_user_app/main.dart';
 
 // ignore: must_be_immutable
 class SelectedItemWidget extends StatelessWidget {
@@ -18,11 +19,11 @@ class SelectedItemWidget extends StatelessWidget {
       width: 18,
       decoration: decoration ??
           boxDecorationDefault(
-            color: isSelected ? primaryColor : context.cardColor,
-            border: Border.all(color: primaryColor),
+            color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
+            border: Border.all(color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ),
             shape: BoxShape.circle,
           ),
-      child: isSelected ? Icon(Icons.check, color: Colors.white, size: itemSize) : Offstage(),
+      child: isSelected ? Icon(Icons.check, color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C), size: itemSize) : Offstage(),
     );
   }
 }

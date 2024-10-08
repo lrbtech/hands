@@ -462,8 +462,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
         8.height,
         AppButton(
           text: language.signUp,
-          color: Colors.white,
-          textColor: primaryColor,
+          color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
+          textColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
           width: context.width(),
           onTap: () {
             if (widget.isOTPLogin) {
@@ -576,7 +576,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             TextSpan(
               text: language.signIn,
               style: boldTextStyle(
-                  color: white,
+                  color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
                   size: 14,
                   fontFamily:
                       Theme.of(context).textTheme.bodyLarge?.fontFamily),

@@ -130,8 +130,8 @@ class _EmailSinginScreenState extends State<EmailSinginScreen>
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             RoundedCheckBox(
-              borderColor: white,
-              checkedColor: !appStore.isDarkMode ? white : context.primaryColor,
+              borderColor: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
+              checkedColor: Color(0xFF000C2C),
               isChecked: isRemember,
               text: language.rememberMe,
               textStyle: secondaryTextStyle(),
@@ -162,8 +162,8 @@ class _EmailSinginScreenState extends State<EmailSinginScreen>
         14.height,
         AppButton(
           text: language.signIn,
-          color: white,
-          textColor: primaryColor,
+          color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
+          textColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6) ,
           width: context.width(),
           onTap: () {
             _handleLogin();

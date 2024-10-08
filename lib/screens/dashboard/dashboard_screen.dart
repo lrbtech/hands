@@ -231,7 +231,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         item: ItemConfig(
           icon: Icon(
             Icons.abc,
-            color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
+            color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
           ),
           // icon: Image.asset(
           //   'assets/ic_logo.png',
@@ -239,7 +239,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           //title: language.booking,
           title: " ",
           activeForegroundColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
-          inactiveForegroundColor: grey,
+          inactiveForegroundColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
         ),
       ),
       PersistentTabConfig(

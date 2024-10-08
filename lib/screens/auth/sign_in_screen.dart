@@ -248,7 +248,7 @@ class _SignInScreenState extends State<SignInScreen>
                 Expanded(
                   child: AppButton(
                     text: '',
-                    color: context.cardColor,
+                    color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C)  ,
                     padding: EdgeInsets.all(8),
                     textStyle: boldTextStyle(),
                     width: context.width() - context.navigationBarHeight,
@@ -276,7 +276,7 @@ class _SignInScreenState extends State<SignInScreen>
                   Expanded(
                     child: AppButton(
                       text: '',
-                      color: context.cardColor,
+                      color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) ,
                       padding: EdgeInsets.all(8),
                       textStyle: boldTextStyle(),
                       width: context.width() - context.navigationBarHeight,
@@ -368,13 +368,13 @@ class _SignInScreenState extends State<SignInScreen>
                     margin: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 10),
                     decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
+                        color: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
                         borderRadius: BorderRadius.circular(
                           100,
                         ),
                         boxShadow: [
                           BoxShadow(
-                              color: Colors.white54,
+                              color: appStore.isDarkMode ? Colors.white54 : black.withOpacity(0.3),
                               offset: Offset(0, 3),
                               spreadRadius: 0.1,
                               blurRadius: 4)
@@ -382,22 +382,20 @@ class _SignInScreenState extends State<SignInScreen>
                     padding: EdgeInsets.zero,
                     child: TabBar(
                       isScrollable: false,
-                      unselectedLabelColor: appStore.isDarkMode
-                          ? textSecondaryColor
-                          : primaryColor,
+                      unselectedLabelColor: Color(0xff4B5787),
                       unselectedLabelStyle: primaryTextStyle(
                           fontFamily: Theme.of(context)
                               .textTheme
                               .bodyLarge
                               ?.fontFamily),
                       indicatorSize: TabBarIndicatorSize.tab,
-                      labelColor: black,
+                      labelColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
                       padding: EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                       indicator: BoxDecoration(
                         borderRadius: BorderRadius.circular(
                           100,
                         ),
-                        color: Colors.white,
+                        color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                       ),
                       dividerColor: Colors.transparent,
                       labelStyle: boldTextStyle(
@@ -449,10 +447,8 @@ class _SignInScreenState extends State<SignInScreen>
                                             'Email',
                                             style: TextStyle(
                                               color: _currentIndex == 0
-                                                  ? Theme.of(context)
-                                                      .colorScheme
-                                                      .surface
-                                                  : Colors.grey,
+                                                  ? appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C) 
+                                                  : Color(0xff4B5787),
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),
@@ -461,9 +457,7 @@ class _SignInScreenState extends State<SignInScreen>
                                             Container(
                                               width: 30,
                                               height: 2,
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .surface,
+                                              color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                                             ),
                                         ],
                                       ),
@@ -477,10 +471,8 @@ class _SignInScreenState extends State<SignInScreen>
                                             'Phone',
                                             style: TextStyle(
                                               color: _currentIndex == 1
-                                                  ? Theme.of(context)
-                                                      .colorScheme
-                                                      .surface
-                                                  : Colors.grey,
+                                                  ? appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C)
+                                                  : Color(0xff4B5787),
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),
@@ -489,9 +481,7 @@ class _SignInScreenState extends State<SignInScreen>
                                             Container(
                                               width: 30,
                                               height: 2,
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .surface,
+                                              color: appStore.isDarkMode ?  Color(0xFFFAF9F6) : Color(0xFF000C2C),
                                             ),
                                         ],
                                       ),
