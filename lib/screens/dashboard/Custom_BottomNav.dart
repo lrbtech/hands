@@ -14,16 +14,16 @@ Widget customFloatingActionButton(BuildContext context) {
     child: Container(
       height: 55,
       width: 55,
-      // decoration: const BoxDecoration(
-      //   borderRadius: BorderRadius.all(Radius.circular(50)),
-      //   boxShadow: [
-      //     BoxShadow(
-      //       color: Color.fromARGB(255, 191, 185, 185),
-      //       offset: Offset(0, 2),
-      //       blurRadius: 4,
-      //     ),
-      //   ],
-      // ),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(50)),
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromARGB(255, 191, 185, 185),
+            offset: Offset(0, 2),
+            blurRadius: 4,
+          ),
+        ],
+      ),
       child: FloatingActionButton(
         onPressed: () {
           // Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
@@ -45,7 +45,7 @@ Widget customFloatingActionButton(BuildContext context) {
                           ? BookingFragment()
                           : SignInScreen(isFromDashboard: true))));
         },
-        backgroundColor: appStore.isDarkMode ? Color(0xFF000C2C) : Color(0xFFFAF9F6),
+        backgroundColor: primaryColor,
         shape: const CircleBorder(),
         child: ClipOval(
           child: Image.asset(
@@ -72,7 +72,7 @@ Widget custombottomNavigationBar(BuildContext context) {
       ],
     ),
     child: BottomAppBar(
-      color: secondaryColor,
+      color: primaryColor,
       child: Container(
         height: 41,
         child: Padding(
